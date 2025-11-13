@@ -1,25 +1,132 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hub de Modelos 3D</title>
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      background-color: #0f172a;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin: 30px 0;
+      font-size: 2em;
+      color: #38bdf8;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card {
+      background-color: #1e293b;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(56,189,248,0.5);
+    }
+    .card img {
+      width: 100%;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .title {
+      padding: 10px;
+      font-weight: bold;
+      color: #e2e8f0;
+    }
+    /* Modal (popup) */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      max-width: 300px;
+      text-align: center;
+      color: #f1f5f9;
+    }
+    .modal button {
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #38bdf8;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.2s;
+    }
+    .modal button:hover {
+      background-color: #0ea5e9;
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <h1>Hub de Modelos 3D</h1>
-    <p class="subtitle">Clique em uma miniatura para acessar o link do modelo</p>
-  </header>
+  <h1>Hub de Modelos 3D</h1>
+  <div class="gallery" id="gallery"></div>
 
-  <main class="gallery-container" id="gallery">
-    <!-- Cards serão inseridos pelo scripts.js -->
-  </main>
+  <div class="modal" id="modal">
+    <div class="modal-content" id="modal-content"></div>
+  </div>
 
-  <footer class="site-footer">
-    <small>© Hub de Modelos 3D — mantido por você</small>
-  </footer>
+  <script>
+    async function loadGallery() {
+      const response = await fetch('links.json');
+      const items = await response.json();
+      const gallery = document.getElementById('gallery');
+      const modal = document.getElementById('modal');
+      const modalContent = document.getElementById('modal-content');
 
-  <script src="scripts.js"></script>
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="images/${item.filename}" alt="${item.title}">
+          <div class="title">${item.title}</div>
+        `;
+        card.addEventListener('click', () => {
+          modal.style.display = 'flex';
+          modalContent.innerHTML = `
+            <h2>${item.title}</h2>
+            ${item.options.map(opt => `
+              <button onclick="window.open('${opt.url}', '_blank')">${opt.label}</button>
+            `).join('')}
+            <button onclick="document.getElementById('modal').style.display='none'">Fechar</button>
+          `;
+        });
+        gallery.appendChild(card);
+      });
+
+      modal.addEventListener('click', e => {
+        if (e.target === modal) modal.style.display = 'none';
+      });
+    }
+
+    loadGallery();
+  </script>
 </body>
 </html>
