@@ -1,0 +1,12 @@
+[
+  {
+    "filename": "exemplo1.jpg",
+    "title": "Modelo A - Robô",
+    "url": "https://example.com/modeloA"
+  },
+  {
+    "filename": "exemplo2.jpg",
+    "title": "Modelo B - Carro",
+    "url": "https://example.com/modeloB"
+  }
+]
