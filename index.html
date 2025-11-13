@@ -4,9 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hub de Modelos 3D - P84/P85</title>
+
+  <!-- Manifesto do PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0f172a">
+
   <style>
     body {
-      background-color: #0f172a;
+      /* Fundo com imagem */
+      background-image: url('images/fundo.jpg'); /* altere para sua imagem */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
@@ -33,7 +42,7 @@
       margin: 0 auto;
     }
     .card {
-      background-color: #1e293b;
+      background-color: rgba(30, 41, 59, 0.9);
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.4);
       transition: transform 0.2s, box-shadow 0.2s;
@@ -53,7 +62,7 @@
       font-weight: bold;
       color: #e2e8f0;
     }
-    /* Modal */
+    /* Modal (popup) */
     .modal {
       display: none;
       position: fixed;
@@ -100,6 +109,8 @@
       font-size: 0.9em;
       color: white;
       line-height: 1.3em;
+      background: rgba(0,0,0,0.3);
+      padding: 15px 0;
     }
   </style>
 </head>
@@ -155,6 +166,13 @@
     }
 
     loadGallery();
+
+    // Registro do Service Worker (para PWA)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+      .then(() => console.log('Service Worker registrado com sucesso.'))
+      .catch(err => console.log('Falha ao registrar o Service Worker:', err));
+    }
   </script>
 </body>
 </html>
