@@ -1,6 +1,6 @@
 [
   {
-    "filename": "flare.png",
+    "filename": "Flare.png",
     "title": "Flare",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -8,7 +8,7 @@
     ]
   },
   {
-    "filename": "m01.png",
+    "filename": "M01.png",
     "title": "M01",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -16,7 +16,7 @@
     ]
   },
   {
-    "filename": "m02.png",
+    "filename": "M02.png",
     "title": "M02",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "filename": "m04.png",
+    "filename": "M04.png",
     "title": "M04",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -32,7 +32,7 @@
     ]
   },
   {
-    "filename": "m05.png",
+    "filename": "M05.png",
     "title": "M05",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -40,7 +40,7 @@
     ]
   },
   {
-    "filename": "m05b.png",
+    "filename": "M05B.png",
     "title": "M05B",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -48,7 +48,7 @@
     ]
   },
   {
-    "filename": "m06.png",
+    "filename": "M06.png",
     "title": "M06",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -56,7 +56,7 @@
     ]
   },
   {
-    "filename": "m07a.png",
+    "filename": "M07A.png",
     "title": "M07A",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -64,7 +64,7 @@
     ]
   },
   {
-    "filename": "m07b.png",
+    "filename": "M07B.png",
     "title": "M07B",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -72,7 +72,7 @@
     ]
   },
   {
-    "filename": "m09.png",
+    "filename": "M09.png",
     "title": "M09",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -80,7 +80,7 @@
     ]
   },
   {
-    "filename": "m10a.png",
+    "filename": "M10A.png",
     "title": "M10A",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -88,7 +88,7 @@
     ]
   },
   {
-    "filename": "m10b.png",
+    "filename": "M10B.png",
     "title": "M10B",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -96,7 +96,7 @@
     ]
   },
   {
-    "filename": "m10c.png",
+    "filename": "M10C.png",
     "title": "M10C",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -104,7 +104,7 @@
     ]
   },
   {
-    "filename": "m11.png",
+    "filename": "M11.png",
     "title": "M11",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -112,7 +112,7 @@
     ]
   },
   {
-    "filename": "m12.png",
+    "filename": "M12.png",
     "title": "M12",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -120,7 +120,7 @@
     ]
   },
   {
-    "filename": "m13.png",
+    "filename": "M13.png",
     "title": "M13",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -128,7 +128,7 @@
     ]
   },
   {
-    "filename": "m13b.png",
+    "filename": "M13B.png",
     "title": "M13B",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -136,7 +136,7 @@
     ]
   },
   {
-    "filename": "m13rooms.png",
+    "filename": "M13Rooms.png",
     "title": "M13Rooms",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -144,7 +144,7 @@
     ]
   },
   {
-    "filename": "m14.png",
+    "filename": "M14.png",
     "title": "M14",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -152,7 +152,7 @@
     ]
   },
   {
-    "filename": "m15.png",
+    "filename": "M15.png",
     "title": "M15",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -160,7 +160,7 @@
     ]
   },
   {
-    "filename": "m15b.png",
+    "filename": "M15B.png",
     "title": "M15B",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -168,7 +168,7 @@
     ]
   },
   {
-    "filename": "m16.png",
+    "filename": "M16.png",
     "title": "M16",
     "options": [
       { "label": "Opção 1", "url": "#" },
@@ -176,7 +176,7 @@
     ]
   },
   {
-    "filename": "m17.png",
+    "filename": "M17.png",
     "title": "M17",
     "options": [
       { "label": "Opção 1", "url": "#" },
