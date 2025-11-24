@@ -3,8 +3,8 @@
     "filename": "Flare.png",
     "title": "Flare",
     "options": [
-      { "label": "Construction Cloud", "url": "#" },
-      { "label": "Fusion 360", "url": "#" }
+      { "label": "Construction Cloud", "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3AXFYoMoz_R--c7v74gH9q6w&viewModel=detail&moduleId=folders": "#" },
+      { "label": "Fusion 360", "https://a360.co/4bEYVGH": "#" }
     ],
     "disclaimer": "Para Construction Cloud, é necessário ter licença."
   },
@@ -13,7 +13,7 @@
     "title": "M01",
     "options": [
       { "label": "Construction Cloud", "url": "#" },
-      { "label": "Fusion 360", "url": "#" }
+      { "label": "Fusion 360", "https://a360.co/3KstenW": "#" }
     ],
     "disclaimer": "Para Construction Cloud, é necessário ter licença."
   },
@@ -22,7 +22,7 @@
     "title": "M02",
     "options": [
       { "label": "Construction Cloud", "url": "#" },
-      { "label": "Fusion 360", "url": "#" }
+      { "label": "Fusion 360", "https://a360.co/3R9YrjB": "#" }
     ],
     "disclaimer": "Para Construction Cloud, é necessário ter licença."
   },
@@ -31,7 +31,7 @@
     "title": "M04",
     "options": [
       { "label": "Construction Cloud", "url": "#" },
-      { "label": "Fusion 360", "url": "#" }
+      { "label": "Fusion 360", "https://a360.co/3wWFJoF": "#" }
     ],
     "disclaimer": "Para Construction Cloud, é necessário ter licença."
   },
