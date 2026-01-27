@@ -1,56 +1,208 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3D Model Hub | P84-P85</title>
-  
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#0f172a">
-  
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Model Hub | P84-P85 Projects</title>
+    <meta name="theme-color" content="#0f172a">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-  <div class="container">
-    <header>
-      <h1 class="main-title">3D Model Hub</h1>
-      <span class="subtitle">P84 / P85 Projects</span>
-    </header>
+<body class="antialiased min-h-screen flex flex-col">
 
-    <main>
-      <section id="hull-section" class="section">
-        <div class="section-header">
-          <h2>HULL</h2>
-          <div class="line"></div>
-        </div>
-        <div class="gallery" id="gallery-hull">
-          <!-- Hull items will be injected here -->
-        </div>
-      </section>
+    <!-- Ambient Background Effects -->
+    <div class="fixed inset-0 grid-bg pointer-events-none z-0"></div>
 
-      <section id="topside-section" class="section">
-        <div class="section-header">
-          <h2>TOPSIDE</h2>
-          <div class="line"></div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-panel">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded bg-gradient-to-tr from-brand-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-brand-500/30">
+                        <i class="fa-solid fa-cube text-white text-sm"></i>
+                    </div>
+                    <span class="font-display font-bold text-xl tracking-tight text-white">3D Model Hub</span>
+                </div>
+                <div class="flex items-center gap-4 text-sm font-medium text-slate-400">
+                    <span class="px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-brand-400">
+                        v2.0
+                    </span>
+                    <div class="h-4 w-px bg-slate-700"></div>
+                    <span class="hidden sm:block">Engineering Visualization</span>
+                </div>
+            </div>
         </div>
-        <div class="gallery" id="gallery-topside">
-          <!-- Topside items will be injected here -->
-        </div>
-      </section>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 flex-grow pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        
+        <!-- Hero Header -->
+        <header class="text-center mb-20 animate-fade-in-up">
+            <div class="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-300 text-xs font-semibold tracking-wide uppercase">
+                <span class="w-2 h-2 rounded-full bg-brand-400 mr-2 animate-pulse"></span>
+                Project Status: Active
+            </div>
+            <h1 class="text-5xl md:text-7xl font-display font-bold text-white mb-6 tracking-tight">
+                P84 <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-indigo-500">/</span> P85
+            </h1>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                A centralized repository for high-fidelity marine engineering 3D assets. 
+                Explore the hull structures and topside modules in detail.
+            </p>
+        </header>
+
+        <!-- Hull Section -->
+        <section id="hull-section-wrapper" class="mb-24 hidden">
+            <div class="flex items-end justify-between mb-8 border-b border-slate-800 pb-4">
+                <div>
+                    <h2 class="text-3xl font-display font-bold text-white flex items-center gap-3">
+                        <i class="fa-solid fa-ship text-brand-500 opacity-80"></i>
+                        Hull Structures
+                    </h2>
+                    <p class="text-slate-500 text-sm mt-1">Base vessel architecture and framing</p>
+                </div>
+                <div class="hidden sm:block text-slate-600 text-xs font-mono uppercase">ID: SEC-HULL-01</div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8" id="hull-section">
+                <!-- Javascript will inject larger cards here -->
+            </div>
+        </section>
+
+        <!-- Topside Section -->
+        <section id="topside-section-wrapper" class="mb-12 hidden">
+            <div class="flex items-end justify-between mb-8 border-b border-slate-800 pb-4">
+                <div>
+                    <h2 class="text-3xl font-display font-bold text-white flex items-center gap-3">
+                        <i class="fa-solid fa-layer-group text-indigo-500 opacity-80"></i>
+                        Topside Modules
+                    </h2>
+                    <p class="text-slate-500 text-sm mt-1">Processing units, living quarters, and flares</p>
+                </div>
+                <div class="hidden sm:block text-slate-600 text-xs font-mono uppercase">ID: SEC-TOP-02</div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="topside-section">
+                <!-- Javascript will inject cards here -->
+            </div>
+        </section>
+
     </main>
 
-    <div class="modal" id="modal">
-      <div class="modal-content" id="modal-content">
-        <!-- Modal content will be injected here -->
-      </div>
+    <!-- Footer -->
+    <footer class="relative z-10 border-t border-slate-800/60 bg-slate-900/50 mt-auto">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between">
+            <div class="flex justify-center space-x-6 md:order-2">
+                <a href="#" class="text-slate-500 hover:text-brand-400 transition-colors">
+                    <span class="sr-only">Internal Network</span>
+                    <i class="fa-solid fa-network-wired"></i>
+                </a>
+                <a href="#" class="text-slate-500 hover:text-brand-400 transition-colors">
+                    <span class="sr-only">Database</span>
+                    <i class="fa-solid fa-database"></i>
+                </a>
+            </div>
+            <div class="mt-8 md:mt-0 md:order-1 text-center md:text-left">
+                <p class="text-base text-slate-500">
+                    &copy; 2024 Created by <strong class="text-slate-300">Daniel Alves Anversi</strong>
+                </p>
+                <p class="text-xs text-slate-600 mt-2 font-mono uppercase tracking-wider">
+                    SRGE / ESUP / APS / ESC
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Overlay -->
+    <div id="modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-slate-950/90 backdrop-blur-sm transition-opacity opacity-0" id="modal-backdrop"></div>
+
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <!-- Modal Panel -->
+                <div class="relative transform overflow-hidden rounded-2xl glass-panel text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-4xl opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" id="modal-panel">
+                    
+                    <!-- Header -->
+                    <div class="border-b border-white/10 px-6 py-4 flex items-center justify-between bg-white/5">
+                        <h3 class="text-lg font-semibold leading-6 text-white" id="modal-title">Model Viewer</h3>
+                        <button type="button" onclick="closeModal()" class="rounded-md text-slate-400 hover:text-white focus:outline-none transition-colors">
+                            <i class="fa-solid fa-xmark text-xl"></i>
+                        </button>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="px-6 py-6" id="modal-content">
+                        <!-- Dynamic Content -->
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="bg-slate-900/50 px-6 py-4 sm:flex sm:flex-row-reverse sm:px-6 border-t border-white/10" id="modal-footer">
+                        <!-- Buttons will be injected here -->
+                        <button type="button" onclick="closeModal()" class="mt-3 inline-flex w-full justify-center rounded-lg bg-white/5 px-4 py-2 text-sm font-semibold text-slate-300 shadow-sm ring-1 ring-inset ring-white/10 hover:bg-white/10 sm:mt-0 sm:w-auto transition-colors">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <footer>
-      <p>Created by <strong>Daniel Alves Anversi</strong></p>
-      <p>SRGE / ESUP / APS / ESC</p>
-    </footer>
-  </div>
-
-  <script src="scripts.js"></script>
+    <!-- PWA Scripts -->
+    <script src="scripts.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js');
+            });
+        }
+    </script>
 </body>
 </html>
