@@ -37,6 +37,20 @@
       max-width: 1200px;
       margin: 0 auto;
     }
+    .gallery.hull-gallery {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      max-width: 400px;
+    }
+    .section-title {
+      margin: 40px 0 10px;
+      font-size: 2em;
+      color: #facc15;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-bottom: 2px solid #22c55e;
+      display: inline-block;
+      padding: 0 20px 5px;
+    }
     .card {
       background-color: #1e293b;
       border-radius: 10px;
@@ -116,7 +130,15 @@
     <span class="subtitle">P84/P85</span>
   </h1>
 
-  <div class="gallery" id="gallery"></div>
+  <div id="topside-section">
+    <h2 class="section-title">TOPSIDE</h2>
+    <div class="gallery" id="gallery-topside"></div>
+  </div>
+
+  <div id="hull-section">
+    <h2 class="section-title">HULL</h2>
+    <div class="gallery hull-gallery" id="gallery-hull"></div>
+  </div>
 
   <div class="modal" id="modal">
     <div class="modal-content" id="modal-content"></div>
@@ -131,7 +153,10 @@
     async function loadGallery() {
       const response = await fetch('links.json');
       const items = await response.json();
-      const gallery = document.getElementById('gallery');
+
+      const topsideGallery = document.getElementById('gallery-topside');
+      const hullGallery = document.getElementById('gallery-hull');
+
       const modal = document.getElementById('modal');
       const modalContent = document.getElementById('modal-content');
 
@@ -153,7 +178,12 @@
             <button onclick="document.getElementById('modal').style.display='none'">Fechar</button>
           `;
         });
-        gallery.appendChild(card);
+
+        if (item.group === 'HULL') {
+          hullGallery.appendChild(card);
+        } else {
+          topsideGallery.appendChild(card);
+        }
       });
 
       modal.addEventListener('click', e => {
