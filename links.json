@@ -1,502 +1,347 @@
-[
-  {
-    "filename": "Flare.png",
-    "title": "Flare",
-    "description": "Flare Tower",
-    "projects": {
-      "P84": { "country": "Singapore", "city": "TUAS" },
-      "P85": { "country": "Singapore", "city": "TUAS" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3AXFYoMoz_R--c7v74gH9q6w&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/4bEYVGH"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M01.png",
-    "title": "M01",
-    "description": "Flare System",
-    "projects": {
-      "P84": { "country": "Brazil", "city": "Angra" },
-      "P85": { "country": "Brazil", "city": "Angra" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3A8JNisjyMS22mygUFXILzRg&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3KstenW"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M02.png",
-    "title": "M02",
-    "description": "CO2 Compression",
-    "projects": {
-      "P84": { "country": "Brazil", "city": "Angra" },
-      "P85": { "country": "Brazil", "city": "Angra" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3A7CVEpmv5RFuxWs-zC2z2yQ&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3R9YrjB"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M04.png",
-    "title": "M04",
-    "description": "CO2 Removal",
-    "projects": {
-      "P84": { "country": "Brazil", "city": "Aracruz" },
-      "P85": { "country": "Brazil", "city": "Aracruz" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3A83zhp8OyQ8uR1OV4BEyukQ&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3wWFJoF"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M05.png",
-    "title": "M05",
-    "description": "Main Compression",
-    "projects": {
-      "P84": { "country": "Indonesia", "city": "Batam" },
-      "P85": { "country": "Indonesia", "city": "Batam" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3AyJCTmCRdQS-Rl8NwrpPycQ&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/4bINspx"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M05B.png",
-    "title": "M05B",
-    "description": "URV System & Laydown",
-    "projects": {
-      "P84": { "country": "Brazil", "city": "Angra" },
-      "P85": { "country": "Brazil", "city": "Angra" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3AtYxZIWYtRh2xKN4fGfPK4A&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/4aJYhpZ"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M06.png",
-    "title": "M06",
-    "description": "GDU, Fuel Gas & HCD",
-    "projects": {
-      "P84": { "country": "Brazil", "city": "Aracruz" },
-      "P85": { "country": "Brazil", "city": "Aracruz" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3AKy_JknPpSwCWFdukhzaFqw&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3x2Aa85"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M07A.png",
-    "title": "M07A",
-    "description": "Injection and Export",
-    "projects": {
-      "P84": { "country": "Brazil", "city": "Angra" },
-      "P85": { "country": "Brazil", "city": "Angra" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3AqKP-_B3lROWxijfJ2ueU5w&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3KpiqqH"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M07B.png",
-    "title": "M07B",
-    "description": "Injection and Export",
-    "projects": {
-      "P84": { "country": "Brazil", "city": "Angra" },
-      "P85": { "country": "Brazil", "city": "Angra" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3AKo3MuPKgR1mC8Sgv4ZdHtg&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/4aKht70"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M09.png",
-    "title": "M09",
-    "description": "Manifolds & LR PIG",
-    "projects": {
-      "P84": { "country": "China", "city": "Nantong" },
-      "P85": { "country": "China", "city": "Nantong" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3A0mRugnnzRUu8TbsbPJXs6Q&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/4aKD4ft"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M10A.png",
-    "title": "M10A",
-    "description": "Oil Processing & Well Service",
-    "projects": {
-      "P84": { "country": "China", "city": "Nantong" },
-      "P85": { "country": "Brazil", "city": "Aracruz" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3AMCvFP2D3QayDUzSDWeamNQ&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3VmOy4m"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M10B.png",
-    "title": "M10B",
-    "description": "Produced Water System",
-    "projects": {
-      "P84": { "country": "China", "city": "Nantong" },
-      "P85": { "country": "Brazil", "city": "Aracruz" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3Al5H-4V05RkebNWEAt_Uu7g&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3VmPfL0"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M10C.png",
-    "title": "M10C",
-    "description": "Oil Processing & Well Service",
-    "projects": {
-      "P84": { "country": "Brazil", "city": "Aracruz" },
-      "P85": { "country": "Brazil", "city": "Aracruz" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3AaYj-HuqfS6e4laswmOMvcw&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3X7u40S"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M11.png",
-    "title": "M11",
-    "description": "Water Injection",
-    "projects": {
-      "P84": { "country": "China", "city": "Nantong" },
-      "P85": { "country": "Indonesia", "city": "Batam" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3A_1vTE6PcSIilGE9MPH0rsQ&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3Ks0Ulu"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M12.png",
-    "title": "M12",
-    "description": "Generation System",
-    "projects": {
-      "P84": { "country": "China", "city": "Nantong" },
-      "P85": { "country": "China", "city": "Nantong" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3AG0HbAt7QTmSZNxRaBw3gFQ&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3X7DKIK"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M13.png",
-    "title": "M13",
-    "description": "Generation System",
-    "projects": {
-      "P84": { "country": "China", "city": "Nantong" },
-      "P85": { "country": "China", "city": "Nantong" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3Avwjutn54RPShcZtYHXg9QA&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3VrguE8"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M13B.png",
-    "title": "M13B",
-    "description": "Generation System",
-    "projects": {
-      "P84": { "country": "China", "city": "Nantong" },
-      "P85": { "country": "China", "city": "Nantong" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3AUNCiBLobQLi89FjULf0wlw&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3yKXnfy"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M13Rooms.png",
-    "title": "M13Rooms",
-    "description": "Automation & Electrical",
-    "projects": {
-      "P84": { "country": "China", "city": "Nantong" },
-      "P85": { "country": "China", "city": "Nantong" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3AqM-vuwAhS1qSr4UaAW8QMQ&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3XajlTl"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M14.png",
-    "title": "M14",
-    "description": "Chemical Products",
-    "projects": {
-      "P84": { "country": "China", "city": "Nantong" },
-      "P85": { "country": "China", "city": "Nantong" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3Abf8qD00vS1qowA2RIzqMEg&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3XccRnb"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M15.png",
-    "title": "M15",
-    "description": "Utilities",
-    "projects": {
-      "P84": { "country": "China", "city": "Nantong" },
-      "P85": { "country": "China", "city": "Nantong" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3AqACTm42pQ9ukSHMlk5Cduw&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/4bFrrb5"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M15B.png",
-    "title": "M15B",
-    "description": "Utilities",
-    "projects": {
-      "P84": { "country": "China", "city": "Nantong" },
-      "P85": { "country": "China", "city": "Nantong" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3AosRL0bgKRmqMBhKIpByKfQ&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3VqsWUY"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M16.png",
-    "title": "M16",
-    "description": "Laydown",
-    "projects": {
-      "P84": { "country": "China", "city": "Nantong" },
-      "P85": { "country": "China", "city": "Nantong" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3ARL0PNsIUS6W4ARMjb5YYrA&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/3KxYCkJ"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "M17.png",
-    "title": "M17",
-    "description": "Automation & Electrical",
-    "projects": {
-      "P84": { "country": "China", "city": "Haiyang" },
-      "P85": { "country": "China", "city": "Haiyang" }
-    },
-    "options": [
-      {
-        "label": "Construction Cloud",
-        "url": "https://acc.autodesk.com/docs/files/projects/e9464cb6-c1a1-4d61-8d0a-1cf4eba87524?folderUrn=urn%3Aadsk.wipprod%3Afs.folder%3Aco.zBfRvNUPTRW6DezjGSAm6w&entityId=urn%3Aadsk.wipprod%3Adm.lineage%3APMW-jCuUQ-Ol9hTLiibvUA&viewModel=detail&moduleId=folders"
-      },
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/4b1neNX"
-      }
-    ],
-    "disclaimer": "For Construction Cloud, a license is required.",
-    "group": "TOPSIDE"
-  },
-  {
-    "filename": "Hull.png",
-    "title": "HULL",
-    "description": "Hull scope",
-    "projects": {
-      "P84": { "country": "TBD", "city": "TBD" },
-      "P85": { "country": "TBD", "city": "TBD" }
-    },
-    "options": [
-      {
-        "label": "Fusion 360",
-        "url": "https://a360.co/4qM4gU7"
-      }
-    ],
-    "disclaimer": "Visualização do Casco",
-    "group": "HULL"
-  }
-]
+let allData = [];
+let map = null;
+let markers = [];
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('links.json')
+        .then(response => response.json())
+        .then(data => {
+            allData = data;
+            renderSection(data, 'TOPSIDE', 'topside-section');
+            renderSection(data, 'HULL', 'hull-section');
+        })
+        .catch(error => console.error('Error loading links:', error));
+});
+
+function renderSection(data, groupName, containerId) {
+    const container = document.getElementById(containerId);
+    const wrapper = document.getElementById(`${containerId}-wrapper`);
+    const filteredData = data.filter(item => item.group === groupName);
+
+    if (filteredData.length > 0) {
+        wrapper.classList.remove('hidden');
+        filteredData.forEach(item => {
+            const card = createCard(item);
+            container.appendChild(card);
+        });
+    }
+}
+
+function createCard(item) {
+    const div = document.createElement('div');
+    const isHull = item.group === 'HULL';
+    
+    div.className = `model-card glass-card rounded-2xl overflow-hidden group relative flex flex-col ${isHull ? 'md:col-span-1 lg:col-span-1 min-h-[320px]' : 'min-h-[280px]'}`;
+    
+    const imagePath = item.filename ? `images/${item.filename}` : `images/${item.image || 'Hull.png'}`;
+
+    // Share button logic
+    const shareUrl = window.location.href + '#' + encodeURIComponent(item.title);
+
+    div.innerHTML = `
+        <!-- Image Container -->
+        <div class="relative h-48 w-full overflow-hidden bg-slate-800 cursor-pointer" onclick="openModal('${item.title}')">
+            <img src="${imagePath}" alt="${item.title}" 
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                 onerror="handleImageError(this)">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+            
+            <!-- Share Button -->
+            <button onclick="handleShare(event, '${item.title}')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-slate-900/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-500 transition-all duration-300 opacity-0 group-hover:opacity-100 z-20">
+                <i class="fa-solid fa-share-nodes text-xs"></i>
+            </button>
+        </div>
+
+        <!-- Content -->
+        <div class="p-6 flex flex-col flex-grow cursor-pointer" onclick="openModal('${item.title}')">
+            <div class="flex items-start justify-between mb-2">
+                <h3 class="text-xl font-bold text-white group-hover:text-brand-400 transition-colors leading-tight">
+                    ${item.title}
+                </h3>
+                <span class="text-brand-500 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
+            </div>
+            
+            <p class="text-slate-400 text-sm line-clamp-2 mb-4 flex-grow">
+                ${item.description || '3D visualization and technical information for the offshore module.'}
+            </p>
+
+            <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono">
+                <div class="flex flex-col gap-1">
+                    <span class="text-slate-500 uppercase tracking-wider">${item.group}</span>
+                    <span class="text-slate-600 text-[9px] uppercase">${item.projects?.P84?.city || ''} / ${item.projects?.P85?.city || ''}</span>
+                </div>
+                <span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">VIEW</span>
+            </div>
+        </div>
+
+        <!-- Hover Glow Effect -->
+        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-brand-500/10 blur-2xl rounded-full group-hover:bg-brand-500/20 transition-all duration-500"></div>
+    `;
+
+    return div;
+}
+
+// MODAL LOGIC
+const modal = document.getElementById('modal');
+const modalBackdrop = document.getElementById('modal-backdrop');
+const modalPanel = document.getElementById('modal-panel');
+const modalTitle = document.getElementById('modal-title');
+const modalContent = document.getElementById('modal-content');
+const modalFooter = document.getElementById('modal-footer');
+
+function openModal(title) {
+    const item = allData.find(d => d.title === title);
+    if (!item) return;
+
+    modal.classList.remove('hidden');
+    
+    // Animate in
+    setTimeout(() => {
+        modalBackdrop.classList.add('modal-show-backdrop');
+        modalPanel.classList.add('modal-show-panel');
+    }, 10);
+
+    modalTitle.innerText = item.title;
+    
+    const imagePath = item.filename ? `images/${item.filename}` : `images/${item.image || 'Hull.png'}`;
+
+    modalContent.innerHTML = `
+        <div class="space-y-6">
+            <div class="aspect-video w-full bg-slate-900 rounded-xl border border-white/10 overflow-hidden relative shadow-inner">
+                <img src="${imagePath}" class="w-full h-full object-cover opacity-90" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="hidden absolute inset-0 items-center justify-center bg-slate-900/50">
+                     <i class="fa-solid fa-cube text-6xl text-slate-800"></i>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                    <span class="block text-[10px] text-slate-500 uppercase tracking-widest mb-1 font-bold">Technical Description</span>
+                    <p class="text-sm text-slate-300 leading-relaxed">${item.description || '3D visualization and technical information for the offshore module.'}</p>
+                </div>
+                <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                    <span class="block text-[10px] text-slate-500 uppercase tracking-widest mb-2 font-bold">Construction Sites</span>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-7 h-7 rounded bg-brand-500/10 flex items-center justify-center text-brand-400 border border-brand-500/20 text-[10px] font-bold">P84</div>
+                            <div class="text-xs">
+                                <span class="text-slate-500 block">Location</span>
+                                <span class="text-white">${item.projects?.P84?.city}, ${item.projects?.P84?.country}</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-7 h-7 rounded bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20 text-[10px] font-bold">P85</div>
+                            <div class="text-xs">
+                                <span class="text-slate-500 block">Location</span>
+                                <span class="text-white">${item.projects?.P85?.city}, ${item.projects?.P85?.country}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4 rounded-xl bg-amber-500/5 border border-amber-500/20 flex gap-4">
+                <i class="fa-solid fa-circle-info text-amber-500 mt-1"></i>
+                <div>
+                    <h4 class="text-sm font-bold text-amber-200 mb-1 font-display">Information & Access</h4>
+                    <p class="text-xs text-amber-200/70 leading-relaxed mb-1">
+                        ${item.disclaimer || 'Access may require specialized software or active platform license.'}
+                    </p>
+                    <p class="text-[10px] text-amber-200/40 leading-relaxed uppercase tracking-tighter">
+                        Best viewed in Chrome/Edge with Hardware Acceleration enabled.
+                    </p>
+                </div>
+            </div>
+        </div>
+    `;
+
+    let buttonsHtml = '';
+    if (item.options && item.options.length > 0) {
+        item.options.forEach(opt => {
+            buttonsHtml += `
+                <a href="${opt.url}" target="_blank" class="inline-flex w-full justify-center rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand-600/20 hover:bg-brand-500 sm:ml-3 sm:w-auto transition-all active:scale-95 uppercase tracking-wide">
+                    ${opt.label}
+                </a>
+            `;
+        });
+    }
+    
+    modalFooter.innerHTML = `
+        <div class="flex flex-col sm:flex-row-reverse w-full gap-2 sm:gap-0">
+            ${buttonsHtml}
+            <button type="button" onclick="closeModal()" class="mt-3 inline-flex w-full justify-center rounded-lg bg-white/5 px-6 py-2.5 text-sm font-bold text-slate-300 shadow-sm ring-1 ring-inset ring-white/10 hover:bg-white/10 sm:mt-0 sm:w-auto transition-all uppercase tracking-wide">
+                Close
+            </button>
+        </div>
+    `;
+}
+
+function closeModal() {
+    modalBackdrop.classList.remove('modal-show-backdrop');
+    modalPanel.classList.remove('modal-show-panel');
+    
+    setTimeout(() => {
+        modal.classList.add('hidden');
+    }, 300);
+}
+
+modalBackdrop.addEventListener('click', closeModal);
+
+function handleImageError(img) {
+    const container = img.parentElement;
+    container.innerHTML = `
+        <div class="w-full h-full flex flex-col items-center justify-center text-slate-600 bg-slate-800/50">
+            <i class="fa-solid fa-cube text-4xl mb-2"></i>
+            <span class="text-[10px] uppercase tracking-widest opacity-50 font-bold">Preview Unavailable</span>
+        </div>
+    `;
+}
+
+// TAB SWITCHING
+function switchTab(tab) {
+    const modelsView = document.getElementById('view-models');
+    const sitesView = document.getElementById('view-sites');
+    const tabModels = document.getElementById('tab-models');
+    const tabSites = document.getElementById('tab-sites');
+
+    if (tab === 'models') {
+        modelsView.classList.remove('hidden');
+        sitesView.classList.add('hidden');
+        tabModels.className = "px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-brand-500 text-white shadow-lg";
+        tabSites.className = "px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-400 hover:text-white hover:bg-white/5";
+    } else {
+        modelsView.classList.add('hidden');
+        sitesView.classList.remove('hidden');
+        tabSites.className = "px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-brand-500 text-white shadow-lg";
+        tabModels.className = "px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-400 hover:text-white hover:bg-white/5";
+        
+        // Initialize map if not already done
+        if (!map) {
+            setTimeout(initMap, 100);
+        }
+    }
+}
+
+// MAP LOGIC
+const CITY_COORDINATES = {
+    'TUAS': [1.2944, 103.6358],
+    'Angra': [-23.0067, -44.3189],
+    'Aracruz': [-19.8203, -40.2733],
+    'Batam': [1.1283, 104.0531],
+    'Nantong': [31.9802, 120.8943],
+    'Haiyang': [36.7767, 121.1594]
+};
+
+function initMap() {
+    document.getElementById('map-loader').style.opacity = '1';
+    
+    map = L.map('map', {
+        center: [10, 20],
+        zoom: 2,
+        zoomControl: false
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
+    }).addTo(map);
+
+    L.control.zoom({
+        position: 'bottomright'
+    }).addTo(map);
+
+    // Group items by city
+    const cityGroups = {};
+    allData.forEach(item => {
+        if (!item.projects) return;
+        
+        // Add for P84
+        const city84 = item.projects.P84.city;
+        if (CITY_COORDINATES[city84]) {
+            if (!cityGroups[city84]) cityGroups[city84] = { name: city84, country: item.projects.P84.country, modules: [] };
+            cityGroups[city84].modules.push({ ...item, project: 'P84' });
+        }
+
+        // Add for P85
+        const city85 = item.projects.P85.city;
+        if (CITY_COORDINATES[city85]) {
+            if (!cityGroups[city85]) cityGroups[city85] = { name: city85, country: item.projects.P85.country, modules: [] };
+            cityGroups[city85].modules.push({ ...item, project: 'P85' });
+        }
+    });
+
+    // Create markers
+    Object.keys(cityGroups).forEach(cityName => {
+        const group = cityGroups[cityName];
+        const coords = CITY_COORDINATES[cityName];
+        
+        const marker = L.marker(coords).addTo(map);
+        marker.on('click', () => showSiteInfo(group));
+        markers.push(marker);
+    });
+
+    document.getElementById('map-loader').style.opacity = '0';
+}
+
+function showSiteInfo(group) {
+    const siteInfo = document.getElementById('site-info');
+    
+    let modulesHtml = '';
+    // Sort modules by title and project
+    group.modules.sort((a,b) => a.title.localeCompare(b.title)).forEach(m => {
+        modulesHtml += `
+            <div class="p-3 bg-white/5 rounded-lg border border-white/10 hover:border-brand-500/50 transition-colors cursor-pointer group" onclick="openModal('${m.title}')">
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-sm font-bold text-white group-hover:text-brand-400">${m.title}</span>
+                    <span class="text-[9px] px-1.5 py-0.5 rounded ${m.project === 'P84' ? 'bg-brand-500/20 text-brand-400' : 'bg-indigo-500/20 text-indigo-400'} font-bold">${m.project}</span>
+                </div>
+                <span class="text-[10px] text-slate-500 line-clamp-1">${m.description}</span>
+            </div>
+        `;
+    });
+
+    siteInfo.innerHTML = `
+        <div class="animate-fade-in-up">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/20">
+                    <i class="fa-solid fa-industry"></i>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-white leading-none">${group.name}</h4>
+                    <span class="text-xs text-slate-500 uppercase tracking-widest">${group.country}</span>
+                </div>
+            </div>
+            
+            <div class="space-y-2">
+                <h5 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Allocated Modules</h5>
+                <div class="max-h-[350px] overflow-y-auto pr-2 custom-scrollbar space-y-2">
+                    ${modulesHtml}
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Zoom to site
+    map.flyTo(CITY_COORDINATES[group.name], 5);
+}
+
+// SHARE LOGIC
+function handleShare(event, title) {
+    event.stopPropagation();
+    const shareUrl = window.location.origin + window.location.pathname + '#' + encodeURIComponent(title);
+    
+    if (navigator.share) {
+        navigator.share({
+            title: '3D Model - ' + title,
+            url: shareUrl
+        }).catch(console.error);
+    } else {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+            alert('Link copied to clipboard!');
+        });
+    }
+}
