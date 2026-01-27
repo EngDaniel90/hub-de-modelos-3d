@@ -371,12 +371,13 @@
     "filename": "Hull.png",
     "title": "HULL",
     "group": "HULL",
+    "description": "Estrutura principal do casco (HULL), integrando sistemas de flutuação e suporte estrutural para as operações offshore.",
     "options": [
       {
         "label": "Fusion 360",
         "url": "https://a360.co/4qM4gU7"
       }
     ],
-    "disclaimer": "Hull Visualization"
+    "disclaimer": "Visualização do Casco"
   }
 ]
