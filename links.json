@@ -2,6 +2,11 @@
   {
     "filename": "Flare.png",
     "title": "Flare",
+    "description": "Flare Tower",
+    "projects": {
+      "P84": { "country": "Singapore", "city": "TUAS" },
+      "P85": { "country": "Singapore", "city": "TUAS" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -18,6 +23,11 @@
   {
     "filename": "M01.png",
     "title": "M01",
+    "description": "Flare System",
+    "projects": {
+      "P84": { "country": "Brazil", "city": "Angra" },
+      "P85": { "country": "Brazil", "city": "Angra" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -34,6 +44,11 @@
   {
     "filename": "M02.png",
     "title": "M02",
+    "description": "CO2 Compression",
+    "projects": {
+      "P84": { "country": "Brazil", "city": "Angra" },
+      "P85": { "country": "Brazil", "city": "Angra" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -50,6 +65,11 @@
   {
     "filename": "M04.png",
     "title": "M04",
+    "description": "CO2 Removal",
+    "projects": {
+      "P84": { "country": "Brazil", "city": "Aracruz" },
+      "P85": { "country": "Brazil", "city": "Aracruz" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -66,6 +86,11 @@
   {
     "filename": "M05.png",
     "title": "M05",
+    "description": "Main Compression",
+    "projects": {
+      "P84": { "country": "Indonesia", "city": "Batam" },
+      "P85": { "country": "Indonesia", "city": "Batam" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -82,6 +107,11 @@
   {
     "filename": "M05B.png",
     "title": "M05B",
+    "description": "URV System & Laydown",
+    "projects": {
+      "P84": { "country": "Brazil", "city": "Angra" },
+      "P85": { "country": "Brazil", "city": "Angra" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -98,6 +128,11 @@
   {
     "filename": "M06.png",
     "title": "M06",
+    "description": "GDU, Fuel Gas & HCD",
+    "projects": {
+      "P84": { "country": "Brazil", "city": "Aracruz" },
+      "P85": { "country": "Brazil", "city": "Aracruz" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -114,6 +149,11 @@
   {
     "filename": "M07A.png",
     "title": "M07A",
+    "description": "Injection and Export",
+    "projects": {
+      "P84": { "country": "Brazil", "city": "Angra" },
+      "P85": { "country": "Brazil", "city": "Angra" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -130,6 +170,11 @@
   {
     "filename": "M07B.png",
     "title": "M07B",
+    "description": "Injection and Export",
+    "projects": {
+      "P84": { "country": "Brazil", "city": "Angra" },
+      "P85": { "country": "Brazil", "city": "Angra" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -146,6 +191,11 @@
   {
     "filename": "M09.png",
     "title": "M09",
+    "description": "Manifolds & LR PIG",
+    "projects": {
+      "P84": { "country": "China", "city": "Nantong" },
+      "P85": { "country": "China", "city": "Nantong" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -162,6 +212,11 @@
   {
     "filename": "M10A.png",
     "title": "M10A",
+    "description": "Oil Processing & Well Service",
+    "projects": {
+      "P84": { "country": "China", "city": "Nantong" },
+      "P85": { "country": "Brazil", "city": "Aracruz" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -178,6 +233,11 @@
   {
     "filename": "M10B.png",
     "title": "M10B",
+    "description": "Produced Water System",
+    "projects": {
+      "P84": { "country": "China", "city": "Nantong" },
+      "P85": { "country": "Brazil", "city": "Aracruz" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -194,6 +254,11 @@
   {
     "filename": "M10C.png",
     "title": "M10C",
+    "description": "Oil Processing & Well Service",
+    "projects": {
+      "P84": { "country": "Brazil", "city": "Aracruz" },
+      "P85": { "country": "Brazil", "city": "Aracruz" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -210,6 +275,11 @@
   {
     "filename": "M11.png",
     "title": "M11",
+    "description": "Water Injection",
+    "projects": {
+      "P84": { "country": "China", "city": "Nantong" },
+      "P85": { "country": "Indonesia", "city": "Batam" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -226,6 +296,11 @@
   {
     "filename": "M12.png",
     "title": "M12",
+    "description": "Generation System",
+    "projects": {
+      "P84": { "country": "China", "city": "Nantong" },
+      "P85": { "country": "China", "city": "Nantong" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -242,6 +317,11 @@
   {
     "filename": "M13.png",
     "title": "M13",
+    "description": "Generation System",
+    "projects": {
+      "P84": { "country": "China", "city": "Nantong" },
+      "P85": { "country": "China", "city": "Nantong" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -258,6 +338,11 @@
   {
     "filename": "M13B.png",
     "title": "M13B",
+    "description": "Generation System",
+    "projects": {
+      "P84": { "country": "China", "city": "Nantong" },
+      "P85": { "country": "China", "city": "Nantong" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -274,6 +359,11 @@
   {
     "filename": "M13Rooms.png",
     "title": "M13Rooms",
+    "description": "Automation & Electrical",
+    "projects": {
+      "P84": { "country": "China", "city": "Nantong" },
+      "P85": { "country": "China", "city": "Nantong" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -290,6 +380,11 @@
   {
     "filename": "M14.png",
     "title": "M14",
+    "description": "Chemical Products",
+    "projects": {
+      "P84": { "country": "China", "city": "Nantong" },
+      "P85": { "country": "China", "city": "Nantong" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -306,6 +401,11 @@
   {
     "filename": "M15.png",
     "title": "M15",
+    "description": "Utilities",
+    "projects": {
+      "P84": { "country": "China", "city": "Nantong" },
+      "P85": { "country": "China", "city": "Nantong" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -322,6 +422,11 @@
   {
     "filename": "M15B.png",
     "title": "M15B",
+    "description": "Utilities",
+    "projects": {
+      "P84": { "country": "China", "city": "Nantong" },
+      "P85": { "country": "China", "city": "Nantong" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -338,6 +443,11 @@
   {
     "filename": "M16.png",
     "title": "M16",
+    "description": "Laydown",
+    "projects": {
+      "P84": { "country": "China", "city": "Nantong" },
+      "P85": { "country": "China", "city": "Nantong" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -354,6 +464,11 @@
   {
     "filename": "M17.png",
     "title": "M17",
+    "description": "Automation & Electrical",
+    "projects": {
+      "P84": { "country": "China", "city": "Haiyang" },
+      "P85": { "country": "China", "city": "Haiyang" }
+    },
     "options": [
       {
         "label": "Construction Cloud",
@@ -370,13 +485,18 @@
   {
     "filename": "Hull.png",
     "title": "HULL",
-    "group": "HULL",
+    "description": "Hull scope",
+    "projects": {
+      "P84": { "country": "TBD", "city": "TBD" },
+      "P85": { "country": "TBD", "city": "TBD" }
+    },
     "options": [
       {
         "label": "Fusion 360",
         "url": "https://a360.co/4qM4gU7"
       }
     ],
-    "disclaimer": "Hull Visualization"
+    "disclaimer": "Visualização do Casco",
+    "group": "HULL"
   }
 ]

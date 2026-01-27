@@ -1,237 +1,102 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
+/* Base Styles */
 :root {
-  --bg-color: #0f172a;
-  --card-bg: rgba(30, 41, 59, 0.7);
-  --accent-primary: #22c55e;
-  --accent-secondary: #facc15;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --hover-glow: rgba(34, 197, 94, 0.2);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    --brand-500: #0ea5e9;
+    --brand-600: #0284c7;
 }
 
 body {
-  background-color: var(--bg-color);
-  background-image:
-    radial-gradient(at 0% 0%, rgba(34, 197, 94, 0.05) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(250, 204, 21, 0.05) 0px, transparent 50%);
-  font-family: 'Inter', sans-serif;
-  color: var(--text-primary);
-  line-height: 1.5;
-  min-height: 100vh;
-  padding-bottom: 50px;
+    background-color: #020617;
+    color: #f8fafc;
+    font-family: 'Inter', sans-serif;
 }
 
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* Glassmorphism Panel */
+.glass-panel {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-header {
-  text-align: center;
-  padding: 60px 20px;
+.glass-card {
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-h1.main-title {
-  font-size: 3.5rem;
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  background: linear-gradient(to right, #22c55e, #10b981);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 8px;
+.glass-card:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(14, 165, 233, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
 }
 
-.subtitle {
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--accent-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+/* Background Grid */
+.grid-bg {
+    background-image:
+        radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
+    background-size: 32px 32px;
 }
 
-.section {
-  margin-bottom: 60px;
+/* Modal Animations */
+.modal-show-backdrop {
+    opacity: 1 !important;
 }
 
-.section-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
-  gap: 15px;
+.modal-show-panel {
+    opacity: 1 !important;
+    transform: translateY(0) scale(100%) !important;
 }
 
-.section-header h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  white-space: nowrap;
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
 }
 
-.section-header .line {
-  height: 2px;
-  background: linear-gradient(to right, var(--accent-primary), transparent);
-  flex-grow: 1;
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
 }
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 25px;
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
 }
 
-/* Specific HULL styles */
-#hull-section .gallery {
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  justify-content: center;
-  max-width: 800px;
-  margin: 0 auto;
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--brand-500);
 }
 
-.card {
-  background: var(--card-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  position: relative;
+/* Map Styling */
+#map {
+    background: #020617;
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  border-color: var(--accent-primary);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px var(--hover-glow);
+.leaflet-container {
+    background: #020617 !important;
+    font-family: inherit;
 }
 
-.card img {
-  width: 100%;
-  aspect-ratio: 16/10;
-  object-fit: cover;
-  border-bottom: 1px solid var(--glass-border);
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background: rgba(15, 23, 42, 0.95) !important;
+    backdrop-filter: blur(10px);
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.card-content {
-  padding: 16px;
+/* Marker customization if needed */
+.leaflet-marker-icon {
+    filter: drop-shadow(0 0 8px var(--brand-500));
 }
 
-.card-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-primary);
+/* Transitions */
+.view-transition {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-/* Modal Styling */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(2, 6, 23, 0.85);
-  backdrop-filter: blur(8px);
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.modal-content {
-  background: #1e293b;
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  padding: 32px;
-  max-width: 450px;
-  width: 100%;
-  text-align: center;
-  animation: modalScale 0.3s ease-out;
-}
-
-@keyframes modalScale {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.modal h2 {
-  font-size: 2rem;
-  margin-bottom: 12px;
-  color: var(--text-primary);
-}
-
-.modal p {
-  color: var(--accent-secondary);
-  font-size: 0.95rem;
-  margin-bottom: 24px;
-}
-
-.btn-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.modal button {
-  padding: 14px 24px;
-  border-radius: 12px;
-  border: none;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.btn-primary {
-  background: var(--accent-primary);
-  color: #052e16;
-}
-
-.btn-primary:hover {
-  background: #4ade80;
-  transform: scale(1.02);
-}
-
-.btn-secondary {
-  background: #334155;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background: #475569;
-}
-
-.btn-close {
-  background: transparent;
-  color: var(--text-secondary);
-  margin-top: 10px;
-}
-
-.btn-close:hover {
-  color: white;
-}
-
-footer {
-  text-align: center;
-  margin-top: 80px;
-  padding: 40px 20px;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  border-top: 1px solid var(--glass-border);
-}
-
-footer strong {
-  color: var(--text-primary);
-}
-
-@media (max-width: 768px) {
-  h1.main-title { font-size: 2.5rem; }
-  .gallery { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
-  #hull-section .gallery { grid-template-columns: 1fr; }
+/* Hide Map Attribution for cleaner UI if desired, but good to keep */
+.leaflet-control-attribution {
+    background: rgba(0, 0, 0, 0.5) !important;
+    color: #475569 !important;
 }
