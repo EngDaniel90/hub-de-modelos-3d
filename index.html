@@ -1,174 +1,56 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hub de Modelos 3D - P84/P85</title>
-
-  <!-- Manifesto do PWA -->
+  <title>3D Model Hub | P84-P85</title>
+  
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0f172a">
-
-  <style>
-    body {
-      background-color: #0f172a; /* Azul escuro restaurado */
-      font-family: Arial, sans-serif;
-      color: white;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-    }
-    h1.main-title {
-      margin: 30px 0;
-      font-size: 2.5em;
-      color: #22c55e; /* Verde */
-    }
-    h1.main-title .subtitle {
-      display: block;
-      font-size: 1.5em;
-      color: #facc15; /* Amarelo */
-      margin-top: 5px;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .card {
-      background-color: #1e293b;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-    }
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(56,189,248,0.5);
-    }
-    .card img {
-      width: 100%;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-    }
-    .title {
-      padding: 10px;
-      font-weight: bold;
-      color: #e2e8f0;
-    }
-    /* Modal (popup) */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-content {
-      background-color: #1e293b;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
-      max-width: 300px;
-      text-align: center;
-      color: #f1f5f9;
-    }
-    .modal-content p {
-      font-size: 0.9em;
-      color: #facc15;
-      margin-bottom: 10px;
-    }
-    .modal button {
-      margin: 10px;
-      padding: 10px 20px;
-      background-color: #38bdf8;
-      color: black;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background-color 0.2s;
-    }
-    .modal button:hover {
-      background-color: #0ea5e9;
-    }
-    /* Rodapé */
-    footer {
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: white;
-      line-height: 1.3em;
-      background: rgba(0,0,0,0.3);
-      padding: 15px 0;
-    }
-  </style>
+  
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1 class="main-title">
-    Hub de Modelos 3D
-    <span class="subtitle">P84/P85</span>
-  </h1>
+  <div class="container">
+    <header>
+      <h1 class="main-title">3D Model Hub</h1>
+      <span class="subtitle">P84 / P85 Projects</span>
+    </header>
 
-  <div class="gallery" id="gallery"></div>
+    <main>
+      <section id="hull-section" class="section">
+        <div class="section-header">
+          <h2>HULL</h2>
+          <div class="line"></div>
+        </div>
+        <div class="gallery" id="gallery-hull">
+          <!-- Hull items will be injected here -->
+        </div>
+      </section>
 
-  <div class="modal" id="modal">
-    <div class="modal-content" id="modal-content"></div>
+      <section id="topside-section" class="section">
+        <div class="section-header">
+          <h2>TOPSIDE</h2>
+          <div class="line"></div>
+        </div>
+        <div class="gallery" id="gallery-topside">
+          <!-- Topside items will be injected here -->
+        </div>
+      </section>
+    </main>
+
+    <div class="modal" id="modal">
+      <div class="modal-content" id="modal-content">
+        <!-- Modal content will be injected here -->
+      </div>
+    </div>
+
+    <footer>
+      <p>Created by <strong>Daniel Alves Anversi</strong></p>
+      <p>SRGE / ESUP / APS / ESC</p>
+    </footer>
   </div>
 
-  <footer>
-    Autor: Daniel Alves Anversi<br>
-    SRGE/ESUP/APS/ESC
-  </footer>
-
-  <script>
-    async function loadGallery() {
-      const response = await fetch('links.json');
-      const items = await response.json();
-      const gallery = document.getElementById('gallery');
-      const modal = document.getElementById('modal');
-      const modalContent = document.getElementById('modal-content');
-
-      items.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          <img src="images/${item.filename}" alt="${item.title}">
-          <div class="title">${item.title}</div>
-        `;
-        card.addEventListener('click', () => {
-          modal.style.display = 'flex';
-          modalContent.innerHTML = `
-            <h2>${item.title}</h2>
-            <p>${item.disclaimer}</p>
-            ${item.options.map(opt => `
-              <button onclick="window.open('${opt.url}', '_blank')">${opt.label}</button>
-            `).join('')}
-            <button onclick="document.getElementById('modal').style.display='none'">Fechar</button>
-          `;
-        });
-        gallery.appendChild(card);
-      });
-
-      modal.addEventListener('click', e => {
-        if (e.target === modal) modal.style.display = 'none';
-      });
-    }
-
-    loadGallery();
-
-    // Registro do Service Worker (para PWA)
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-      .then(() => console.log('Service Worker registrado com sucesso.'))
-      .catch(err => console.log('Falha ao registrar o Service Worker:', err));
-    }
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
