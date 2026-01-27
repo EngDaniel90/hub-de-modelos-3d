@@ -17,6 +17,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Leaflet Map CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
     <!-- Custom Styles -->
     <link rel="stylesheet" href="styles.css">
 
@@ -71,20 +74,20 @@
                 </div>
                 <div class="flex items-center gap-4 text-sm font-medium text-slate-400">
                     <span class="px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-brand-400">
-                        v2.0
+                        v2.1
                     </span>
                     <div class="h-4 w-px bg-slate-700"></div>
-                    <span class="hidden sm:block">Engineering Visualization</span>
+                    <span class="hidden sm:block text-xs uppercase tracking-wider">Engineering Asset Management</span>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
+    <!-- Main Content Container -->
     <main class="relative z-10 flex-grow pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
         
         <!-- Hero Header -->
-        <header class="text-center mb-20 animate-fade-in-up">
+        <header class="text-center mb-12 animate-fade-in-up">
             <div class="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full border border-brand-500/30 bg-brand-500/10 text-brand-300 text-xs font-semibold tracking-wide uppercase">
                 <span class="w-2 h-2 rounded-full bg-brand-400 mr-2 animate-pulse"></span>
                 Project Status: Active
@@ -93,46 +96,94 @@
                 P84 <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-indigo-500">/</span> P85
             </h1>
             <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                A centralized repository for high-fidelity marine engineering 3D assets. 
-                Explore the hull structures and topside modules in detail.
+                A centralized repository for high-fidelity marine engineering 3D assets. Explore the hull and topside modules in detail.
             </p>
+
+            <!-- Tab Switcher -->
+            <div class="mt-10 flex justify-center">
+                <div class="inline-flex p-1 bg-slate-900/80 border border-slate-700/50 rounded-xl shadow-2xl">
+                    <button id="tab-models" onclick="switchTab('models')" class="px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-brand-500 text-white shadow-lg">
+                        <i class="fa-solid fa-cubes"></i>
+                        3D Models
+                    </button>
+                    <button id="tab-sites" onclick="switchTab('sites')" class="px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-400 hover:text-white hover:bg-white/5">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Construction Sites
+                    </button>
+                </div>
+            </div>
         </header>
 
-        <!-- Hull Section -->
-        <section id="hull-section-wrapper" class="mb-24 hidden">
-            <div class="flex items-end justify-between mb-8 border-b border-slate-800 pb-4">
-                <div>
-                    <h2 class="text-3xl font-display font-bold text-white flex items-center gap-3">
-                        <i class="fa-solid fa-ship text-brand-500 opacity-80"></i>
-                        Hull Structures
-                    </h2>
-                    <p class="text-slate-500 text-sm mt-1">Base vessel architecture and framing</p>
+        <!-- Models View -->
+        <div id="view-models" class="space-y-24">
+            <!-- Hull Section -->
+            <section id="hull-section-wrapper" class="hidden">
+                <div class="flex items-end justify-between mb-8 border-b border-slate-800 pb-4">
+                    <div>
+                        <h2 class="text-3xl font-display font-bold text-white flex items-center gap-3">
+                            <i class="fa-solid fa-ship text-brand-500 opacity-80"></i>
+                            Hull
+                        </h2>
+                        <p class="text-slate-500 text-sm mt-1">Hull scope</p>
+                    </div>
+                    <div class="hidden sm:block text-slate-600 text-xs font-mono uppercase">ID: SEC-HULL-01</div>
                 </div>
-                <div class="hidden sm:block text-slate-600 text-xs font-mono uppercase">ID: SEC-HULL-01</div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8" id="hull-section">
-                <!-- Javascript will inject larger cards here -->
-            </div>
-        </section>
-
-        <!-- Topside Section -->
-        <section id="topside-section-wrapper" class="mb-12 hidden">
-            <div class="flex items-end justify-between mb-8 border-b border-slate-800 pb-4">
-                <div>
-                    <h2 class="text-3xl font-display font-bold text-white flex items-center gap-3">
-                        <i class="fa-solid fa-layer-group text-indigo-500 opacity-80"></i>
-                        Topside Modules
-                    </h2>
-                    <p class="text-slate-500 text-sm mt-1">Processing units, living quarters, and flares</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8" id="hull-section">
+                    <!-- Cards will be injected here -->
                 </div>
-                <div class="hidden sm:block text-slate-600 text-xs font-mono uppercase">ID: SEC-TOP-02</div>
-            </div>
+            </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="topside-section">
-                <!-- Javascript will inject cards here -->
+            <!-- Topside Section -->
+            <section id="topside-section-wrapper" class="hidden">
+                <div class="flex items-end justify-between mb-8 border-b border-slate-800 pb-4">
+                    <div>
+                        <h2 class="text-3xl font-display font-bold text-white flex items-center gap-3">
+                            <i class="fa-solid fa-layer-group text-indigo-500 opacity-80"></i>
+                            Topside Modules
+                        </h2>
+                        <p class="text-slate-500 text-sm mt-1">Processing units.</p>
+                    </div>
+                    <div class="hidden sm:block text-slate-600 text-xs font-mono uppercase">ID: SEC-TOP-02</div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="topside-section">
+                    <!-- Cards will be injected here -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Sites View (Map) -->
+        <div id="view-sites" class="hidden animate-fade-in-up">
+            <div class="glass-panel overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-4 min-h-[600px]">
+                    <!-- Sidebar for filters/details -->
+                    <div class="p-6 border-r border-white/10 bg-slate-900/30">
+                        <h3 class="text-xl font-bold text-white mb-4">Construction Tracker</h3>
+                        <p class="text-sm text-slate-400 mb-6">Select a site on the map to view construction details and modules.</p>
+                        
+                        <div id="site-info" class="space-y-6">
+                            <div class="text-center py-10 text-slate-500 italic">
+                                <i class="fa-solid fa-map-pin text-3xl mb-3 opacity-20 block"></i>
+                                Click on a map marker
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Area -->
+                    <div class="lg:col-span-3 relative bg-slate-950">
+                        <div id="map" class="w-full h-full z-10"></div>
+                        <!-- Map Loading Overlay -->
+                        <div id="map-loader" class="absolute inset-0 z-20 bg-slate-950 flex items-center justify-center transition-opacity duration-500 pointer-events-none">
+                            <div class="flex flex-col items-center">
+                                <div class="w-12 h-12 border-4 border-brand-500/20 border-t-brand-500 rounded-full animate-spin"></div>
+                                <span class="mt-4 text-xs font-mono text-slate-500 uppercase tracking-widest">Initialising Map...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
 
     </main>
 
@@ -172,7 +223,12 @@
                     
                     <!-- Header -->
                     <div class="border-b border-white/10 px-6 py-4 flex items-center justify-between bg-white/5">
-                        <h3 class="text-lg font-semibold leading-6 text-white" id="modal-title">Model Viewer</h3>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded bg-brand-500/20 flex items-center justify-center">
+                                <i class="fa-solid fa-cube text-brand-400 text-[10px]"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold leading-6 text-white" id="modal-title">Model Viewer</h3>
+                        </div>
                         <button type="button" onclick="closeModal()" class="rounded-md text-slate-400 hover:text-white focus:outline-none transition-colors">
                             <i class="fa-solid fa-xmark text-xl"></i>
                         </button>
@@ -195,7 +251,10 @@
         </div>
     </div>
 
-    <!-- PWA Scripts -->
+    <!-- Leaflet Map JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Main Logic -->
     <script src="scripts.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
