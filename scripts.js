@@ -35,9 +35,6 @@ function createCard(item) {
 
     const imagePath = item.filename ? `images/${item.filename}` : `images/${item.image || 'Hull.png'}`;
 
-    // Share button logic
-    const shareUrl = window.location.href + '#' + encodeURIComponent(item.title);
-
     div.innerHTML = `
         <!-- Image Container -->
         <div class="relative h-48 w-full overflow-hidden bg-slate-800 cursor-pointer" onclick="openModal('${item.title}')">
@@ -106,21 +103,39 @@ function openModal(title) {
     modalTitle.innerText = item.title;
 
     const imagePath = item.filename ? `images/${item.filename}` : `images/${item.image || 'Hull.png'}`;
+    const p84Loc = item.projects?.P84 ? `${item.projects.P84.city}, ${item.projects.P84.country}` : 'N/A';
+    const p85Loc = item.projects?.P85 ? `${item.projects.P85.city}, ${item.projects.P85.country}` : 'N/A';
 
     modalContent.innerHTML = `
         <div class="space-y-6">
-            <div class="aspect-video w-full bg-slate-900 rounded-xl border border-white/10 overflow-hidden relative shadow-inner">
-                <img src="${imagePath}" class="w-full h-full object-cover opacity-90"
+            <div class="aspect-video w-full bg-slate-900 rounded-xl border border-white/10 overflow-hidden relative shadow-inner group">
+                <img src="${imagePath}" class="w-full h-full object-cover opacity-60"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="hidden absolute inset-0 items-center justify-center bg-slate-900/50">
                      <i class="fa-solid fa-cube text-6xl text-slate-800"></i>
+                </div>
+
+                <!-- 3D VIEWER READY OVERLAY -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/40 backdrop-blur-[2px]">
+                    <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/20 border border-brand-500/30 text-brand-300 text-[10px] font-bold uppercase tracking-widest mb-4">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse"></span>
+                        3D Viewer Ready
+                    </div>
+                    <button onclick="window.open('${item.options?.[0]?.url || '#'}', '_blank')" class="w-16 h-16 rounded-full bg-brand-500 text-white flex items-center justify-center shadow-2xl shadow-brand-500/40 hover:scale-110 active:scale-95 transition-all duration-300">
+                        <i class="fa-solid fa-play text-xl ml-1"></i>
+                    </button>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="bg-white/5 p-4 rounded-xl border border-white/10">
                     <span class="block text-[10px] text-slate-500 uppercase tracking-widest mb-1 font-bold">Technical Description</span>
-                    <p class="text-sm text-slate-300 leading-relaxed">${item.description || '3D visualization and technical information for the offshore module.'}</p>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        ${item.description || '3D visualization and technical information.'}
+                        <span class="block mt-2 text-slate-500 italic">
+                            Constructed at: ${p84Loc} (P84) / ${p85Loc} (P85)
+                        </span>
+                    </p>
                 </div>
                 <div class="bg-white/5 p-4 rounded-xl border border-white/10">
                     <span class="block text-[10px] text-slate-500 uppercase tracking-widest mb-2 font-bold">Construction Sites</span>
@@ -129,14 +144,14 @@ function openModal(title) {
                             <div class="w-7 h-7 rounded bg-brand-500/10 flex items-center justify-center text-brand-400 border border-brand-500/20 text-[10px] font-bold">P84</div>
                             <div class="text-xs">
                                 <span class="text-slate-500 block">Location</span>
-                                <span class="text-white">${item.projects?.P84?.city}, ${item.projects?.P84?.country}</span>
+                                <span class="text-white">${p84Loc}</span>
                             </div>
                         </div>
                         <div class="flex items-center gap-3">
                             <div class="w-7 h-7 rounded bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20 text-[10px] font-bold">P85</div>
                             <div class="text-xs">
                                 <span class="text-slate-500 block">Location</span>
-                                <span class="text-white">${item.projects?.P85?.city}, ${item.projects?.P85?.country}</span>
+                                <span class="text-white">${p85Loc}</span>
                             </div>
                         </div>
                     </div>
@@ -150,9 +165,6 @@ function openModal(title) {
                     <p class="text-xs text-amber-200/70 leading-relaxed mb-1">
                         ${item.disclaimer || 'Access may require specialized software or active platform license.'}
                     </p>
-                    <p class="text-[10px] text-amber-200/40 leading-relaxed uppercase tracking-tighter">
-                        Best viewed in Chrome/Edge with Hardware Acceleration enabled.
-                    </p>
                 </div>
             </div>
         </div>
@@ -163,7 +175,7 @@ function openModal(title) {
         item.options.forEach(opt => {
             buttonsHtml += `
                 <a href="${opt.url}" target="_blank" class="inline-flex w-full justify-center rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand-600/20 hover:bg-brand-500 sm:ml-3 sm:w-auto transition-all active:scale-95 uppercase tracking-wide">
-                    ${opt.label}
+                    ${opt.label === 'Fusion 360' ? '<i class="fa-solid fa-play mr-2 mt-0.5"></i> Play 3D' : opt.label}
                 </a>
             `;
         });
@@ -220,7 +232,10 @@ function switchTab(tab) {
 
         // Initialize map if not already done
         if (!map) {
-            setTimeout(initMap, 100);
+            initMap();
+        } else {
+            // Force leaflet to recalculate size because container was hidden
+            setTimeout(() => map.invalidateSize(), 100);
         }
     }
 }
@@ -236,6 +251,15 @@ const CITY_COORDINATES = {
 };
 
 function initMap() {
+    if (typeof L === 'undefined') {
+        console.error('Leaflet not loaded');
+        setTimeout(initMap, 500);
+        return;
+    }
+
+    const mapElement = document.getElementById('map');
+    if (!mapElement) return;
+
     document.getElementById('map-loader').style.opacity = '1';
 
     map = L.map('map', {
@@ -245,7 +269,7 @@ function initMap() {
     });
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
         subdomains: 'abcd',
         maxZoom: 20
     }).addTo(map);
@@ -259,19 +283,17 @@ function initMap() {
     allData.forEach(item => {
         if (!item.projects) return;
 
-        // Add for P84
-        const city84 = item.projects.P84.city;
-        if (CITY_COORDINATES[city84]) {
-            if (!cityGroups[city84]) cityGroups[city84] = { name: city84, country: item.projects.P84.country, modules: [] };
-            cityGroups[city84].modules.push({ ...item, project: 'P84' });
-        }
-
-        // Add for P85
-        const city85 = item.projects.P85.city;
-        if (CITY_COORDINATES[city85]) {
-            if (!cityGroups[city85]) cityGroups[city85] = { name: city85, country: item.projects.P85.country, modules: [] };
-            cityGroups[city85].modules.push({ ...item, project: 'P85' });
-        }
+        ['P84', 'P85'].forEach(projKey => {
+            const city = item.projects[projKey]?.city;
+            const country = item.projects[projKey]?.country;
+            if (city && CITY_COORDINATES[city]) {
+                if (!cityGroups[city]) cityGroups[city] = { name: city, country: country, modules: [] };
+                // Avoid duplicates if both projects are in the same city
+                if (!cityGroups[city].modules.find(m => m.title === item.title && m.project === projKey)) {
+                    cityGroups[city].modules.push({ ...item, project: projKey });
+                }
+            }
+        });
     });
 
     // Create markers
@@ -284,14 +306,16 @@ function initMap() {
         markers.push(marker);
     });
 
-    document.getElementById('map-loader').style.opacity = '0';
+    setTimeout(() => {
+        document.getElementById('map-loader').style.opacity = '0';
+        map.invalidateSize();
+    }, 500);
 }
 
 function showSiteInfo(group) {
     const siteInfo = document.getElementById('site-info');
 
     let modulesHtml = '';
-    // Sort modules by title and project
     group.modules.sort((a,b) => a.title.localeCompare(b.title)).forEach(m => {
         modulesHtml += `
             <div class="p-3 bg-white/5 rounded-lg border border-white/10 hover:border-brand-500/50 transition-colors cursor-pointer group" onclick="openModal('${m.title}')">
@@ -325,7 +349,6 @@ function showSiteInfo(group) {
         </div>
     `;
 
-    // Zoom to site
     map.flyTo(CITY_COORDINATES[group.name], 5);
 }
 
