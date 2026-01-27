@@ -1,7 +1,12 @@
+let allData = [];
+let map = null;
+let markers = [];
+
 document.addEventListener('DOMContentLoaded', () => {
     fetch('links.json')
         .then(response => response.json())
         .then(data => {
+            allData = data;
             renderSection(data, 'TOPSIDE', 'topside-section');
             renderSection(data, 'HULL', 'hull-section');
         })
@@ -24,26 +29,28 @@ function renderSection(data, groupName, containerId) {
 
 function createCard(item) {
     const div = document.createElement('div');
-    // Larger cards for HULL group
     const isHull = item.group === 'HULL';
     
-    div.className = `model-card glass-card rounded-2xl overflow-hidden group cursor-pointer relative flex flex-col ${isHull ? 'md:col-span-1 lg:col-span-1 min-h-[320px]' : 'min-h-[280px]'}`;
+    div.className = `model-card glass-card rounded-2xl overflow-hidden group relative flex flex-col ${isHull ? 'md:col-span-1 lg:col-span-1 min-h-[320px]' : 'min-h-[280px]'}`;
     
-    div.onclick = () => openModal(item);
-
     const imagePath = item.filename ? `images/${item.filename}` : `images/${item.image || 'Hull.png'}`;
 
     div.innerHTML = `
         <!-- Image Container -->
-        <div class="relative h-48 w-full overflow-hidden bg-slate-800">
+        <div class="relative h-48 w-full overflow-hidden bg-slate-800 cursor-pointer" onclick="openModal('${item.title}')">
             <img src="${imagePath}" alt="${item.title}" 
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                  onerror="handleImageError(this)">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+            
+            <!-- Share Button -->
+            <button onclick="handleShare(event, '${item.title}')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-slate-900/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-brand-500 transition-all duration-300 opacity-0 group-hover:opacity-100 z-20">
+                <i class="fa-solid fa-share-nodes text-xs"></i>
+            </button>
         </div>
 
         <!-- Content -->
-        <div class="p-6 flex flex-col flex-grow">
+        <div class="p-6 flex flex-col flex-grow cursor-pointer" onclick="openModal('${item.title}')">
             <div class="flex items-start justify-between mb-2">
                 <h3 class="text-xl font-bold text-white group-hover:text-brand-400 transition-colors leading-tight">
                     ${item.title}
@@ -54,12 +61,15 @@ function createCard(item) {
             </div>
             
             <p class="text-slate-400 text-sm line-clamp-2 mb-4 flex-grow">
-                ${item.description || 'View the 3D representation and technical details for this model.'}
+                ${item.description || '3D visualization and technical information for the offshore module.'}
             </p>
 
             <div class="pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono">
-                <span class="text-slate-500 uppercase tracking-wider">${item.group}</span>
-                <span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">VIEW MODEL</span>
+                <div class="flex flex-col gap-1">
+                    <span class="text-slate-500 uppercase tracking-wider">${item.group}</span>
+                    <span class="text-slate-600 text-[9px] uppercase">${item.projects?.P84?.city || ''} / ${item.projects?.P85?.city || ''}</span>
+                </div>
+                <span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">VIEW</span>
             </div>
         </div>
 
@@ -78,7 +88,10 @@ const modalTitle = document.getElementById('modal-title');
 const modalContent = document.getElementById('modal-content');
 const modalFooter = document.getElementById('modal-footer');
 
-function openModal(item) {
+function openModal(title) {
+    const item = allData.find(d => d.title === title);
+    if (!item) return;
+
     modal.classList.remove('hidden');
     
     // Animate in
@@ -90,48 +103,56 @@ function openModal(item) {
     modalTitle.innerText = item.title;
     
     const imagePath = item.filename ? `images/${item.filename}` : `images/${item.image || 'Hull.png'}`;
+    const p84Loc = item.projects?.P84 ? `${item.projects.P84.city}, ${item.projects.P84.country}` : 'N/A';
+    const p85Loc = item.projects?.P85 ? `${item.projects.P85.city}, ${item.projects.P85.country}` : 'N/A';
 
     modalContent.innerHTML = `
         <div class="space-y-6">
-            <div class="aspect-video w-full bg-slate-900 rounded-xl border border-white/10 overflow-hidden relative group shadow-inner">
+            <div class="aspect-video w-full bg-slate-900 rounded-xl border border-white/10 overflow-hidden relative shadow-inner group">
                 <img src="${imagePath}" class="w-full h-full object-cover opacity-60" 
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="hidden absolute inset-0 items-center justify-center bg-slate-900/50">
                      <i class="fa-solid fa-cube text-6xl text-slate-800"></i>
                 </div>
                 
-                <div class="absolute inset-0 flex flex-col items-center justify-center bg-slate-900/40 backdrop-blur-[2px]">
-                    <div class="z-10 text-center animate-pulse-slow">
-                        <div class="w-16 h-16 rounded-full bg-brand-500/20 flex items-center justify-center mx-auto mb-4 border border-brand-500/30">
-                            <i class="fa-solid fa-play text-brand-400 text-xl ml-1"></i>
-                        </div>
-                        <span class="text-white font-display font-medium tracking-wide">3D VIEWER READY</span>
+                <!-- 3D VIEWER READY OVERLAY -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center bg-slate-950/40 backdrop-blur-[2px]">
+                    <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/20 border border-brand-500/30 text-brand-300 text-[10px] font-bold uppercase tracking-widest mb-4">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse"></span>
+                        3D Viewer Ready
                     </div>
+                    <button onclick="window.open('${item.options?.[0]?.url || '#'}', '_blank')" class="w-16 h-16 rounded-full bg-brand-500 text-white flex items-center justify-center shadow-2xl shadow-brand-500/40 hover:scale-110 active:scale-95 transition-all duration-300">
+                        <i class="fa-solid fa-play text-xl ml-1"></i>
+                    </button>
                 </div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="bg-white/5 p-4 rounded-xl border border-white/10">
                     <span class="block text-[10px] text-slate-500 uppercase tracking-widest mb-1 font-bold">Technical Description</span>
-                    <p class="text-sm text-slate-300 leading-relaxed">${item.description || '3D visualization and structural technical information for the offshore module.'}</p>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        ${item.description || '3D visualization and technical information.'}
+                        <span class="block mt-2 text-slate-500 italic">
+                            Constructed at: ${p84Loc} (P84) / ${p85Loc} (P85)
+                        </span>
+                    </p>
                 </div>
-                <div class="bg-white/5 p-4 rounded-xl border border-white/10 flex flex-col justify-center">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div class="w-8 h-8 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20">
-                            <i class="fa-solid fa-shield-halved text-xs"></i>
+                <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+                    <span class="block text-[10px] text-slate-500 uppercase tracking-widest mb-2 font-bold">Construction Sites</span>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-7 h-7 rounded bg-brand-500/10 flex items-center justify-center text-brand-400 border border-brand-500/20 text-[10px] font-bold">P84</div>
+                            <div class="text-xs">
+                                <span class="text-slate-500 block">Location</span>
+                                <span class="text-white">${p84Loc}</span>
+                            </div>
                         </div>
-                        <div>
-                            <span class="block text-[10px] text-slate-500 uppercase tracking-widest font-bold">Security Status</span>
-                            <span class="text-xs text-emerald-400 font-medium">Verified & Encrypted</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-lg bg-brand-500/10 flex items-center justify-center text-brand-400 border border-brand-500/20">
-                            <i class="fa-solid fa-clock-rotate-left text-xs"></i>
-                        </div>
-                        <div>
-                            <span class="block text-[10px] text-slate-500 uppercase tracking-widest font-bold">Last Update</span>
-                            <span class="text-xs text-slate-300 font-medium">May 2024</span>
+                        <div class="flex items-center gap-3">
+                            <div class="w-7 h-7 rounded bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20 text-[10px] font-bold">P85</div>
+                            <div class="text-xs">
+                                <span class="text-slate-500 block">Location</span>
+                                <span class="text-white">${p85Loc}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -144,30 +165,20 @@ function openModal(item) {
                     <p class="text-xs text-amber-200/70 leading-relaxed mb-1">
                         ${item.disclaimer || 'Access may require specialized software or active platform license.'}
                     </p>
-                    <p class="text-[10px] text-amber-200/40 leading-relaxed uppercase tracking-tighter">
-                        Best viewed in Chrome/Edge with Hardware Acceleration enabled.
-                    </p>
                 </div>
             </div>
         </div>
     `;
 
-    // Update footer buttons - Support for multiple options
     let buttonsHtml = '';
     if (item.options && item.options.length > 0) {
         item.options.forEach(opt => {
             buttonsHtml += `
                 <a href="${opt.url}" target="_blank" class="inline-flex w-full justify-center rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand-600/20 hover:bg-brand-500 sm:ml-3 sm:w-auto transition-all active:scale-95 uppercase tracking-wide">
-                    ${opt.label}
+                    ${opt.label === 'Fusion 360' ? '<i class="fa-solid fa-play mr-2 mt-0.5"></i> Play 3D' : opt.label}
                 </a>
             `;
         });
-    } else if (item.url) {
-        buttonsHtml = `
-            <a href="${item.url}" target="_blank" class="inline-flex w-full justify-center rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand-600/20 hover:bg-brand-500 sm:ml-3 sm:w-auto transition-all active:scale-95 uppercase tracking-wide">
-                Access Model
-            </a>
-        `;
     }
     
     modalFooter.innerHTML = `
@@ -189,7 +200,6 @@ function closeModal() {
     }, 300);
 }
 
-// Close on clicking backdrop
 modalBackdrop.addEventListener('click', closeModal);
 
 function handleImageError(img) {
@@ -200,4 +210,161 @@ function handleImageError(img) {
             <span class="text-[10px] uppercase tracking-widest opacity-50 font-bold">Preview Unavailable</span>
         </div>
     `;
+}
+
+// TAB SWITCHING
+function switchTab(tab) {
+    const modelsView = document.getElementById('view-models');
+    const sitesView = document.getElementById('view-sites');
+    const tabModels = document.getElementById('tab-models');
+    const tabSites = document.getElementById('tab-sites');
+
+    if (tab === 'models') {
+        modelsView.classList.remove('hidden');
+        sitesView.classList.add('hidden');
+        tabModels.className = "px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-brand-500 text-white shadow-lg";
+        tabSites.className = "px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-400 hover:text-white hover:bg-white/5";
+    } else {
+        modelsView.classList.add('hidden');
+        sitesView.classList.remove('hidden');
+        tabSites.className = "px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 bg-brand-500 text-white shadow-lg";
+        tabModels.className = "px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 text-slate-400 hover:text-white hover:bg-white/5";
+        
+        // Initialize map if not already done
+        if (!map) {
+            initMap();
+        } else {
+            // Force leaflet to recalculate size because container was hidden
+            setTimeout(() => map.invalidateSize(), 100);
+        }
+    }
+}
+
+// MAP LOGIC
+const CITY_COORDINATES = {
+    'TUAS': [1.2944, 103.6358],
+    'Angra': [-23.0067, -44.3189],
+    'Aracruz': [-19.8203, -40.2733],
+    'Batam': [1.1283, 104.0531],
+    'Nantong': [31.9802, 120.8943],
+    'Haiyang': [36.7767, 121.1594]
+};
+
+function initMap() {
+    if (typeof L === 'undefined') {
+        console.error('Leaflet not loaded');
+        setTimeout(initMap, 500);
+        return;
+    }
+
+    const mapElement = document.getElementById('map');
+    if (!mapElement) return;
+
+    document.getElementById('map-loader').style.opacity = '1';
+    
+    map = L.map('map', {
+        center: [10, 20],
+        zoom: 2,
+        zoomControl: false
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+        subdomains: 'abcd',
+        maxZoom: 20
+    }).addTo(map);
+
+    L.control.zoom({
+        position: 'bottomright'
+    }).addTo(map);
+
+    // Group items by city
+    const cityGroups = {};
+    allData.forEach(item => {
+        if (!item.projects) return;
+        
+        ['P84', 'P85'].forEach(projKey => {
+            const city = item.projects[projKey]?.city;
+            const country = item.projects[projKey]?.country;
+            if (city && CITY_COORDINATES[city]) {
+                if (!cityGroups[city]) cityGroups[city] = { name: city, country: country, modules: [] };
+                // Avoid duplicates if both projects are in the same city
+                if (!cityGroups[city].modules.find(m => m.title === item.title && m.project === projKey)) {
+                    cityGroups[city].modules.push({ ...item, project: projKey });
+                }
+            }
+        });
+    });
+
+    // Create markers
+    Object.keys(cityGroups).forEach(cityName => {
+        const group = cityGroups[cityName];
+        const coords = CITY_COORDINATES[cityName];
+        
+        const marker = L.marker(coords).addTo(map);
+        marker.on('click', () => showSiteInfo(group));
+        markers.push(marker);
+    });
+
+    setTimeout(() => {
+        document.getElementById('map-loader').style.opacity = '0';
+        map.invalidateSize();
+    }, 500);
+}
+
+function showSiteInfo(group) {
+    const siteInfo = document.getElementById('site-info');
+    
+    let modulesHtml = '';
+    group.modules.sort((a,b) => a.title.localeCompare(b.title)).forEach(m => {
+        modulesHtml += `
+            <div class="p-3 bg-white/5 rounded-lg border border-white/10 hover:border-brand-500/50 transition-colors cursor-pointer group" onclick="openModal('${m.title}')">
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-sm font-bold text-white group-hover:text-brand-400">${m.title}</span>
+                    <span class="text-[9px] px-1.5 py-0.5 rounded ${m.project === 'P84' ? 'bg-brand-500/20 text-brand-400' : 'bg-indigo-500/20 text-indigo-400'} font-bold">${m.project}</span>
+                </div>
+                <span class="text-[10px] text-slate-500 line-clamp-1">${m.description}</span>
+            </div>
+        `;
+    });
+
+    siteInfo.innerHTML = `
+        <div class="animate-fade-in-up">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/20">
+                    <i class="fa-solid fa-industry"></i>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-white leading-none">${group.name}</h4>
+                    <span class="text-xs text-slate-500 uppercase tracking-widest">${group.country}</span>
+                </div>
+            </div>
+            
+            <div class="space-y-2">
+                <h5 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Allocated Modules</h5>
+                <div class="max-h-[350px] overflow-y-auto pr-2 custom-scrollbar space-y-2">
+                    ${modulesHtml}
+                </div>
+            </div>
+        </div>
+    `;
+    
+    map.flyTo(CITY_COORDINATES[group.name], 5);
+}
+
+// SHARE LOGIC
+function handleShare(event, title) {
+    event.stopPropagation();
+    const shareUrl = window.location.origin + window.location.pathname + '#' + encodeURIComponent(title);
+    
+    if (navigator.share) {
+        navigator.share({
+            title: '3D Model - ' + title,
+            url: shareUrl
+        }).catch(console.error);
+    } else {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+            alert('Link copied to clipboard!');
+        });
+    }
 }
