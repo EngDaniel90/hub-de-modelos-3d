@@ -155,6 +155,13 @@
                 <div class="grid grid-cols-1 lg:grid-cols-4 h-full">
                     <!-- Sidebar for filters/details -->
                     <div class="p-6 border-r border-white/10 bg-slate-900/30">
+                        <!-- Group Filter -->
+                        <div class="flex gap-2 mb-6">
+                            <button onclick="filterMap('ALL')" data-group="ALL" class="map-filter-btn flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg border border-white/10 bg-brand-500 text-white transition-all">All</button>
+                            <button onclick="filterMap('TOPSIDE')" data-group="TOPSIDE" class="map-filter-btn flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg border border-white/10 text-slate-400 hover:text-white transition-all">Topside</button>
+                            <button onclick="filterMap('HULL')" data-group="HULL" class="map-filter-btn flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg border border-white/10 text-slate-400 hover:text-white transition-all">Hull</button>
+                        </div>
+
                         <h3 class="text-xl font-bold text-white mb-4">Construction Tracker</h3>
                         <p class="text-sm text-slate-400 mb-6">Select a site on the map to view construction details and modules.</p>
 

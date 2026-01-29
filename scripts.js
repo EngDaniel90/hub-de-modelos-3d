@@ -247,8 +247,11 @@ const CITY_COORDINATES = {
     'Aracruz': [-19.8203, -40.2733],
     'Batam': [1.1283, 104.0531],
     'Nantong': [31.9802, 120.8943],
-    'Haiyang': [36.7767, 121.1594]
+    'Haiyang': [36.7767, 121.1594],
+    'Yantai': [37.5333, 121.4000]
 };
+
+let currentMapGroup = 'ALL';
 
 function initMap() {
     if (typeof L === 'undefined') {
@@ -284,33 +287,8 @@ function initMap() {
         position: 'bottomright'
     }).addTo(map);
 
-    // Group items by city
-    const cityGroups = {};
-    allData.forEach(item => {
-        if (!item.projects) return;
-
-        ['P84', 'P85'].forEach(projKey => {
-            const city = item.projects[projKey]?.city;
-            const country = item.projects[projKey]?.country;
-            if (city && CITY_COORDINATES[city]) {
-                if (!cityGroups[city]) cityGroups[city] = { name: city, country: country, modules: [] };
-                // Avoid duplicates if both projects are in the same city
-                if (!cityGroups[city].modules.find(m => m.title === item.title && m.project === projKey)) {
-                    cityGroups[city].modules.push({ ...item, project: projKey });
-                }
-            }
-        });
-    });
-
     // Create markers
-    Object.keys(cityGroups).forEach(cityName => {
-        const group = cityGroups[cityName];
-        const coords = CITY_COORDINATES[cityName];
-
-        const marker = L.marker(coords).addTo(map);
-        marker.on('click', () => showSiteInfo(group));
-        markers.push(marker);
-    });
+    renderMarkers();
 
     setTimeout(() => {
         document.getElementById('map-loader').style.opacity = '0';
@@ -318,21 +296,126 @@ function initMap() {
     }, 500);
 }
 
+function renderMarkers() {
+    // Clear existing markers
+    markers.forEach(m => map.removeLayer(m));
+    markers = [];
+
+    const cityGroups = {};
+    allData.forEach(item => {
+        if (!item.projects) return;
+        if (currentMapGroup !== 'ALL' && item.group !== currentMapGroup) return;
+
+        ['P84', 'P85'].forEach(projKey => {
+            const city = item.projects[projKey]?.city;
+            const country = item.projects[projKey]?.country;
+            if (city && CITY_COORDINATES[city]) {
+                if (!cityGroups[city]) cityGroups[city] = { name: city, country: country, modules: [] };
+                if (!cityGroups[city].modules.find(m => m.title === item.title && m.project === projKey)) {
+                    cityGroups[city].modules.push({ ...item, project: projKey });
+                }
+            }
+        });
+    });
+
+    Object.keys(cityGroups).forEach(cityName => {
+        const group = cityGroups[cityName];
+        const coords = CITY_COORDINATES[cityName];
+
+        const isHullSite = group.modules.some(m => m.group === 'HULL');
+
+        // Custom Marker Style
+        const markerHtml = `
+            <div class="relative">
+                <div class="w-4 h-4 rounded-full ${isHullSite ? 'bg-amber-500 scale-150' : 'bg-brand-500'} border-2 border-white/20 shadow-[0_0_15px_rgba(14,165,233,0.5)]"></div>
+                ${isHullSite ? '<div class="absolute -inset-1 rounded-full bg-amber-500/30 animate-ping"></div>' : ''}
+            </div>
+        `;
+
+        const customIcon = L.divIcon({
+            html: markerHtml,
+            className: 'custom-marker',
+            iconSize: [16, 16],
+            iconAnchor: [8, 8]
+        });
+
+        const marker = L.marker(coords, { icon: customIcon }).addTo(map);
+        marker.on('click', () => showSiteInfo(group));
+        markers.push(marker);
+    });
+}
+
+function filterMap(group) {
+    currentMapGroup = group;
+
+    // Update UI buttons
+    document.querySelectorAll('.map-filter-btn').forEach(btn => {
+        if (btn.dataset.group === group) {
+            btn.classList.add('bg-brand-500', 'text-white');
+            btn.classList.remove('text-slate-400');
+        } else {
+            btn.classList.remove('bg-brand-500', 'text-white');
+            btn.classList.add('text-slate-400');
+        }
+    });
+
+    renderMarkers();
+
+    // Reset site info
+    const siteInfo = document.getElementById('site-info');
+    siteInfo.innerHTML = `
+        <div class="text-center py-10 text-slate-500 italic">
+            <i class="fa-solid fa-map-pin text-3xl mb-3 opacity-20 block"></i>
+            Click on a map marker
+        </div>
+    `;
+}
+
 function showSiteInfo(group) {
     const siteInfo = document.getElementById('site-info');
 
+    // Separate modules by group
+    const topsideModules = group.modules.filter(m => m.group === 'TOPSIDE').sort((a,b) => a.title.localeCompare(b.title));
+    const hullModules = group.modules.filter(m => m.group === 'HULL').sort((a,b) => a.title.localeCompare(b.title));
+
     let modulesHtml = '';
-    group.modules.sort((a,b) => a.title.localeCompare(b.title)).forEach(m => {
-        modulesHtml += `
-            <div class="p-3 bg-white/5 rounded-lg border border-white/10 hover:border-brand-500/50 transition-colors cursor-pointer group" onclick="openModal('${m.title}')">
-                <div class="flex items-center justify-between mb-1">
-                    <span class="text-sm font-bold text-white group-hover:text-brand-400">${m.title}</span>
-                    <span class="text-[9px] px-1.5 py-0.5 rounded ${m.project === 'P84' ? 'bg-brand-500/20 text-brand-400' : 'bg-indigo-500/20 text-indigo-400'} font-bold">${m.project}</span>
+
+    if (hullModules.length > 0) {
+        modulesHtml += `<h5 class="text-[10px] font-bold text-amber-500 uppercase tracking-widest mt-4 mb-2">Hull Scope</h5>`;
+        hullModules.forEach(m => {
+            modulesHtml += `
+                <div class="p-4 bg-amber-500/10 rounded-lg border border-amber-500/30 hover:bg-amber-500/20 transition-all cursor-pointer group mb-3 shadow-lg shadow-amber-500/5" onclick="openModal('${m.title}')">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-base font-bold text-white group-hover:text-amber-400">${m.title}</span>
+                        <div class="flex gap-1">
+                             <span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">P84</span>
+                             <span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">P85</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-300 mb-2 leading-relaxed">${m.description}</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-[9px] uppercase tracking-tighter text-amber-500/70 font-mono font-bold">Large Module Access</span>
+                        <span class="text-[10px] text-amber-400 font-bold">OPEN HUB <i class="fa-solid fa-chevron-right ml-1"></i></span>
+                    </div>
                 </div>
-                <span class="text-[10px] text-slate-500 line-clamp-1">${m.description}</span>
-            </div>
-        `;
-    });
+            `;
+        });
+    }
+
+    if (topsideModules.length > 0) {
+        modulesHtml += `<h5 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-6 mb-2">Topside Modules</h5>`;
+        topsideModules.forEach(m => {
+            modulesHtml += `
+                <div class="p-3 bg-white/5 rounded-lg border border-white/10 hover:border-brand-500/50 transition-colors cursor-pointer group mb-2" onclick="openModal('${m.title}')">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-sm font-bold text-white group-hover:text-brand-400">${m.title}</span>
+                        <span class="text-[9px] px-1.5 py-0.5 rounded ${m.project === 'P84' ? 'bg-brand-500/20 text-brand-400' : 'bg-indigo-500/20 text-indigo-400'} font-bold">${m.project}</span>
+                    </div>
+                    <span class="text-[10px] text-slate-500 line-clamp-1">${m.description}</span>
+                </div>
+            `;
+        });
+    }
 
     siteInfo.innerHTML = `
         <div class="animate-fade-in-up">
