@@ -31,13 +31,13 @@ function createCard(item) {
     const div = document.createElement('div');
     const isHull = item.group === 'HULL';
     
-    div.className = `model-card glass-card rounded-2xl overflow-hidden group relative flex flex-col ${isHull ? 'md:col-span-1 lg:col-span-1 min-h-[320px]' : 'min-h-[280px]'}`;
+    div.className = `model-card glass-card rounded-2xl overflow-hidden group relative flex flex-col ${isHull ? 'md:col-span-2 lg:col-span-2 min-h-[400px]' : 'min-h-[280px]'}`;
     
     const imagePath = item.filename ? `images/${item.filename}` : `images/${item.image || 'Hull.png'}`;
 
     div.innerHTML = `
         <!-- Image Container -->
-        <div class="relative h-48 w-full overflow-hidden bg-slate-800 cursor-pointer" onclick="openModal('${item.title}')">
+        <div class="relative ${isHull ? 'h-72' : 'h-48'} w-full overflow-hidden bg-slate-800 cursor-pointer" onclick="openModal('${item.title}')">
             <img src="${imagePath}" alt="${item.title}" 
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                  onerror="handleImageError(this)">
@@ -262,16 +262,22 @@ function initMap() {
 
     document.getElementById('map-loader').style.opacity = '1';
     
+    const bounds = L.latLngBounds(L.latLng(-85, -180), L.latLng(85, 180));
+
     map = L.map('map', {
-        center: [10, 20],
+        center: [20, 0],
         zoom: 2,
+        minZoom: 2,
+        maxBounds: bounds,
+        maxBoundsViscosity: 1.0,
         zoomControl: false
     });
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-        subdomains: 'abcd',
-        maxZoom: 20
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: US National Park Service',
+        maxZoom: 8,
+        noWrap: true,
+        bounds: bounds
     }).addTo(map);
 
     L.control.zoom({
