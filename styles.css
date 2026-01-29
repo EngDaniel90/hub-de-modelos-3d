@@ -70,11 +70,11 @@ body {
 
 /* Map Styling */
 #map {
-    background: #020617;
+    background: #a5c3e6;
 }
 
 .leaflet-container {
-    background: #020617 !important;
+    background: #a5c3e6 !important;
     font-family: inherit;
 }
 
