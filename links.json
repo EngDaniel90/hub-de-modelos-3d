@@ -487,8 +487,8 @@
     "title": "HULL",
     "description": "Hull scope",
     "projects": {
-      "P84": { "country": "TBD", "city": "TBD" },
-      "P85": { "country": "TBD", "city": "TBD" }
+      "P84": { "country": "China", "city": "Yantai" },
+      "P85": { "country": "China", "city": "Yantai" }
     },
     "options": [
       {
