@@ -150,38 +150,37 @@
         </div>
 
         <!-- Sites View (Map) -->
-        <div id="view-sites" class="hidden animate-fade-in-up h-[600px]">
-            <div class="glass-panel overflow-hidden rounded-2xl border border-white/10 shadow-2xl h-full">
-                <div class="grid grid-cols-1 lg:grid-cols-4 h-full">
-                    <!-- Sidebar for filters/details -->
-                    <div class="p-6 border-r border-white/10 bg-slate-900/30">
-                        <!-- Group Filter -->
-                        <div class="flex gap-2 mb-6">
-                            <button onclick="filterMap('ALL')" data-group="ALL" class="map-filter-btn flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg border border-white/10 bg-brand-500 text-white transition-all">All</button>
-                            <button onclick="filterMap('TOPSIDE')" data-group="TOPSIDE" class="map-filter-btn flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg border border-white/10 text-slate-400 hover:text-white transition-all">Topside</button>
-                            <button onclick="filterMap('HULL')" data-group="HULL" class="map-filter-btn flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg border border-white/10 text-slate-400 hover:text-white transition-all">Hull</button>
-                        </div>
+        <div id="view-sites" class="hidden animate-fade-in-up min-h-[600px] lg:h-[600px]">
+            <div class="glass-panel overflow-hidden rounded-2xl border border-white/10 shadow-2xl h-full flex flex-col lg:grid lg:grid-cols-4">
 
-                        <h3 class="text-xl font-bold text-white mb-4">Construction Tracker</h3>
-                        <p class="text-sm text-slate-400 mb-6">Select a site on the map to view construction details and modules.</p>
-
-                        <div id="site-info" class="space-y-6">
-                            <div class="text-center py-10 text-slate-500 italic">
-                                <i class="fa-solid fa-map-pin text-3xl mb-3 opacity-20 block"></i>
-                                Click on a map marker
-                            </div>
+                <!-- Map Area - Top on Mobile -->
+                <div class="h-[350px] sm:h-[450px] lg:h-full lg:col-span-3 order-1 lg:order-2 relative bg-slate-950 border-b lg:border-b-0 lg:border-l border-white/10">
+                    <div id="map" class="w-full h-full z-10"></div>
+                    <!-- Map Loading Overlay -->
+                    <div id="map-loader" class="absolute inset-0 z-20 bg-slate-950 flex items-center justify-center transition-opacity duration-500 pointer-events-none">
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 h-12 border-4 border-brand-500/20 border-t-brand-500 rounded-full animate-spin"></div>
+                            <span class="mt-4 text-xs font-mono text-slate-500 uppercase tracking-widest">Initialising Map...</span>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Map Area -->
-                    <div class="lg:col-span-3 relative bg-slate-950">
-                        <div id="map" class="w-full h-full z-10"></div>
-                        <!-- Map Loading Overlay -->
-                        <div id="map-loader" class="absolute inset-0 z-20 bg-slate-950 flex items-center justify-center transition-opacity duration-500 pointer-events-none">
-                            <div class="flex flex-col items-center">
-                                <div class="w-12 h-12 border-4 border-brand-500/20 border-t-brand-500 rounded-full animate-spin"></div>
-                                <span class="mt-4 text-xs font-mono text-slate-500 uppercase tracking-widest">Initialising Map...</span>
-                            </div>
+                <!-- Sidebar - Bottom on Mobile -->
+                <div class="p-6 lg:col-span-1 order-2 lg:order-1 bg-slate-900/30 overflow-y-auto max-h-[400px] lg:max-h-full">
+                    <!-- Group Filter -->
+                    <div class="flex gap-2 mb-6">
+                        <button onclick="filterMap('ALL')" data-group="ALL" class="map-filter-btn flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg border border-white/10 bg-brand-500 text-white transition-all">All</button>
+                        <button onclick="filterMap('TOPSIDE')" data-group="TOPSIDE" class="map-filter-btn flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg border border-white/10 text-slate-400 hover:text-white transition-all">Topside</button>
+                        <button onclick="filterMap('HULL')" data-group="HULL" class="map-filter-btn flex-1 py-2 text-[10px] font-bold uppercase tracking-wider rounded-lg border border-white/10 text-slate-400 hover:text-white transition-all">Hull</button>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-white mb-4">Construction Tracker</h3>
+                    <p class="text-sm text-slate-400 mb-6">Select a site on the map to view construction details and modules.</p>
+
+                    <div id="site-info" class="space-y-6">
+                        <div class="text-center py-10 text-slate-500 italic">
+                            <i class="fa-solid fa-map-pin text-3xl mb-3 opacity-20 block"></i>
+                            Click on a map marker
                         </div>
                     </div>
                 </div>

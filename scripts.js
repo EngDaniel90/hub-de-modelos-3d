@@ -69,12 +69,12 @@ function createCard(item) {
                     <span class="text-slate-500 uppercase tracking-wider">${item.group}</span>
                     <span class="text-slate-600 text-[9px] uppercase">${item.projects?.P84?.city || ''} / ${item.projects?.P85?.city || ''}</span>
                 </div>
-                <span class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20">VIEW</span>
+                <button onclick="handleView(event, '${item.title}')" class="px-2 py-1 rounded bg-brand-500/10 text-brand-400 border border-brand-500/20 hover:bg-brand-500 hover:text-white transition-colors duration-300">VIEW</button>
             </div>
         </div>
 
         <!-- Hover Glow Effect -->
-        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-brand-500/10 blur-2xl rounded-full group-hover:bg-brand-500/20 transition-all duration-500"></div>
+        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-brand-500/10 blur-2xl rounded-full group-hover:bg-brand-500/20 transition-all duration-500 pointer-events-none"></div>
     `;
 
     return div;
@@ -324,19 +324,21 @@ function renderMarkers() {
 
         const isHullSite = group.modules.some(m => m.group === 'HULL');
 
-        // Custom Marker Style
+        // Custom Marker Style - Black and Larger
         const markerHtml = `
-            <div class="relative">
-                <div class="w-4 h-4 rounded-full ${isHullSite ? 'bg-amber-500 scale-150' : 'bg-brand-500'} border-2 border-white/20 shadow-[0_0_15px_rgba(14,165,233,0.5)]"></div>
-                ${isHullSite ? '<div class="absolute -inset-1 rounded-full bg-amber-500/30 animate-ping"></div>' : ''}
+            <div class="relative flex items-center justify-center">
+                <div class="w-7 h-7 rounded-full bg-black border-2 border-white shadow-2xl flex items-center justify-center">
+                    <i class="fa-solid fa-location-dot text-white text-[10px]"></i>
+                </div>
+                ${isHullSite ? '<div class="absolute -inset-1 rounded-full border-2 border-black animate-ping opacity-40"></div>' : ''}
             </div>
         `;
 
         const customIcon = L.divIcon({
             html: markerHtml,
             className: 'custom-marker',
-            iconSize: [16, 16],
-            iconAnchor: [8, 8]
+            iconSize: [28, 28],
+            iconAnchor: [14, 14]
         });
 
         const marker = L.marker(coords, { icon: customIcon }).addTo(map);
@@ -439,6 +441,11 @@ function showSiteInfo(group) {
     `;
 
     map.flyTo(CITY_COORDINATES[group.name], 5);
+}
+
+function handleView(event, title) {
+    event.stopPropagation();
+    openModal(title);
 }
 
 // SHARE LOGIC
