@@ -100,3 +100,67 @@ body {
     background: rgba(0, 0, 0, 0.5) !important;
     color: #475569 !important;
 }
+
+/* Hull Card Connectors */
+.connector-down::after,
+.connector-right::after {
+    content: '\f0c1'; /* fa-link */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    color: var(--brand-500);
+    opacity: 0.8;
+    font-size: 1rem;
+    z-index: 20;
+    text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
+    background: #0f172a;
+    border-radius: 50%;
+    padding: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+.connector-down::after {
+    bottom: -28px;
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
+}
+
+.connector-right::after {
+    right: -28px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.connector-down::before {
+    content: '';
+    position: absolute;
+    bottom: -32px;
+    left: 50%;
+    width: 2px;
+    height: 32px;
+    background: linear-gradient(to bottom, var(--brand-500), transparent);
+    transform: translateX(-50%);
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.connector-right::before {
+    content: '';
+    position: absolute;
+    right: -32px;
+    top: 50%;
+    width: 32px;
+    height: 2px;
+    background: linear-gradient(to right, var(--brand-500), transparent);
+    transform: translateY(-50%);
+    opacity: 0.3;
+    z-index: 0;
+}
+
+@media (max-width: 1024px) {
+    .connector-right::after, .connector-right::before,
+    .connector-down::after, .connector-down::before {
+        display: none;
+    }
+}

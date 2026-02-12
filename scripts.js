@@ -31,13 +31,31 @@ function createCard(item) {
     const div = document.createElement('div');
     const isHull = item.group === 'HULL';
     
-    div.className = `model-card glass-card rounded-2xl overflow-hidden group relative flex flex-col ${isHull ? 'md:col-span-2 lg:col-span-2 min-h-[400px]' : 'min-h-[280px]'}`;
+    let gridClasses = 'min-h-[280px]';
+
+    if (isHull) {
+        if (item.title === 'P84-LQ-ALL') {
+            gridClasses = 'lg:col-start-1 lg:row-start-1 lg:col-span-1 min-h-[300px] hull-card connector-down';
+        } else if (item.title === 'P84-AFT-ALL') {
+            gridClasses = 'lg:col-start-1 lg:row-start-2 lg:col-span-1 min-h-[300px] hull-card connector-right';
+        } else if (item.title === 'P84-MID-ALL') {
+            gridClasses = 'lg:col-start-2 lg:row-start-2 lg:col-span-2 min-h-[300px] hull-card connector-right';
+        } else if (item.title === 'P84-FWD-ALL') {
+            gridClasses = 'lg:col-start-4 lg:row-start-2 lg:col-span-1 min-h-[300px] hull-card';
+        } else {
+            gridClasses = 'md:col-span-2 lg:col-span-2 min-h-[400px]';
+        }
+    }
+
+    // Remove overflow-hidden for Hull cards with connectors so the connector can be visible
+    const overflowClass = (isHull && gridClasses.includes('connector')) ? 'overflow-visible' : 'overflow-hidden';
+    div.className = `model-card glass-card rounded-2xl ${overflowClass} group relative flex flex-col ${gridClasses}`;
     
     const imagePath = item.filename ? `images/${item.filename}` : `images/${item.image || 'Hull.png'}`;
 
     div.innerHTML = `
         <!-- Image Container -->
-        <div class="relative ${isHull ? 'h-72' : 'h-48'} w-full overflow-hidden bg-slate-800 cursor-pointer" onclick="openModal('${item.title}')">
+        <div class="relative ${isHull ? 'h-56' : 'h-48'} w-full overflow-hidden bg-slate-800 cursor-pointer rounded-t-2xl" onclick="openModal('${item.title}')">
             <img src="${imagePath}" alt="${item.title}" 
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                  onerror="handleImageError(this)">
