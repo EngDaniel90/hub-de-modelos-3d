@@ -483,9 +483,9 @@
     "group": "TOPSIDE"
   },
   {
-    "filename": "Hull.png",
-    "title": "HULL",
-    "description": "Hull scope",
+    "filename": "P84-LQ-ALL.png",
+    "title": "P84-LQ-ALL",
+    "description": "Living Quarters",
     "projects": {
       "P84": { "country": "China", "city": "Yantai" },
       "P85": { "country": "China", "city": "Yantai" }
@@ -493,7 +493,58 @@
     "options": [
       {
         "label": "Fusion 360",
-        "url": "https://a360.co/4qM4gU7"
+        "url": "https://a360.co/4tMiExF"
+      }
+    ],
+    "disclaimer": "Hull scope visualization",
+    "group": "HULL"
+  },
+  {
+    "filename": "P84-AFT-ALL.png",
+    "title": "P84-AFT-ALL",
+    "description": "Hull - Aft Section",
+    "projects": {
+      "P84": { "country": "China", "city": "Yantai" },
+      "P85": { "country": "China", "city": "Yantai" }
+    },
+    "options": [
+      {
+        "label": "Fusion 360",
+        "url": "https://a360.co/4bNJeQd"
+      }
+    ],
+    "disclaimer": "Hull scope visualization",
+    "group": "HULL"
+  },
+  {
+    "filename": "P84-MID-ALL.png",
+    "title": "P84-MID-ALL",
+    "description": "Hull - Midship Section",
+    "projects": {
+      "P84": { "country": "China", "city": "Yantai" },
+      "P85": { "country": "China", "city": "Yantai" }
+    },
+    "options": [
+      {
+        "label": "Fusion 360",
+        "url": "https://a360.co/402dGip"
+      }
+    ],
+    "disclaimer": "Hull scope visualization",
+    "group": "HULL"
+  },
+  {
+    "filename": "P84-FWD-ALL.png",
+    "title": "P84-FWD-ALL",
+    "description": "Hull - Forward Section",
+    "projects": {
+      "P84": { "country": "China", "city": "Yantai" },
+      "P85": { "country": "China", "city": "Yantai" }
+    },
+    "options": [
+      {
+        "label": "Fusion 360",
+        "url": "https://a360.co/3Mp7ttB"
       }
     ],
     "disclaimer": "Hull scope visualization",
