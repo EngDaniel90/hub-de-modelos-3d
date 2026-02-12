@@ -56,7 +56,7 @@ function createCard(item) {
     div.innerHTML = `
         <!-- Image Container -->
         <div class="relative ${isHull ? 'h-56' : 'h-48'} w-full overflow-hidden bg-slate-800 cursor-pointer rounded-t-2xl" onclick="openModal('${item.title}')">
-            <img src="${imagePath}" alt="${item.title}" 
+            <img src="${imagePath}" alt="${item.title}" loading="lazy"
                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                  onerror="handleImageError(this)">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
