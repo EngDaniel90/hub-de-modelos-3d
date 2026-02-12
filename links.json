@@ -487,8 +487,7 @@
     "title": "P84-LQ-ALL",
     "description": "Living Quarters",
     "projects": {
-      "P84": { "country": "China", "city": "Yantai" },
-      "P85": { "country": "China", "city": "Yantai" }
+      "P84": { "country": "China", "city": "Yantai" }
     },
     "options": [
       {
@@ -504,8 +503,7 @@
     "title": "P84-AFT-ALL",
     "description": "Hull - Aft Section",
     "projects": {
-      "P84": { "country": "China", "city": "Yantai" },
-      "P85": { "country": "China", "city": "Yantai" }
+      "P84": { "country": "China", "city": "Yantai" }
     },
     "options": [
       {
@@ -521,8 +519,7 @@
     "title": "P84-MID-ALL",
     "description": "Hull - Midship Section",
     "projects": {
-      "P84": { "country": "China", "city": "Yantai" },
-      "P85": { "country": "China", "city": "Yantai" }
+      "P84": { "country": "China", "city": "Yantai" }
     },
     "options": [
       {
@@ -538,8 +535,7 @@
     "title": "P84-FWD-ALL",
     "description": "Hull - Forward Section",
     "projects": {
-      "P84": { "country": "China", "city": "Yantai" },
-      "P85": { "country": "China", "city": "Yantai" }
+      "P84": { "country": "China", "city": "Yantai" }
     },
     "options": [
       {
