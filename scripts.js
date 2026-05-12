@@ -20,10 +20,12 @@ function renderSection(data, groupName, containerId) {
 
     if (filteredData.length > 0) {
         wrapper.classList.remove('hidden');
+        const fragment = document.createDocumentFragment();
         filteredData.forEach(item => {
             const card = createCard(item);
-            container.appendChild(card);
+            fragment.appendChild(card);
         });
+        container.appendChild(fragment);
     }
 }
 
