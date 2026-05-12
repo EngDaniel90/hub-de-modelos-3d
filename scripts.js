@@ -398,12 +398,11 @@ function showSiteInfo(group) {
     const topsideModules = group.modules.filter(m => m.group === 'TOPSIDE').sort((a,b) => a.title.localeCompare(b.title));
     const hullModules = group.modules.filter(m => m.group === 'HULL').sort((a,b) => a.title.localeCompare(b.title));
     
-    let modulesHtml = '';
+    const htmlParts = [];
     
     if (hullModules.length > 0) {
-        modulesHtml += `<h5 class="text-[10px] font-bold text-amber-500 uppercase tracking-widest mt-4 mb-2">Hull Scope</h5>`;
-        hullModules.forEach(m => {
-            modulesHtml += `
+        htmlParts.push(`<h5 class="text-[10px] font-bold text-amber-500 uppercase tracking-widest mt-4 mb-2">Hull Scope</h5>`);
+        htmlParts.push(hullModules.map(m => `
                 <div class="p-4 bg-amber-500/10 rounded-lg border border-amber-500/30 hover:bg-amber-500/20 transition-all cursor-pointer group mb-3 shadow-lg shadow-amber-500/5" onclick="openModal('${m.title}')">
                     <div class="flex items-center justify-between mb-2">
                         <span class="text-base font-bold text-white group-hover:text-amber-400">${m.title}</span>
@@ -418,14 +417,12 @@ function showSiteInfo(group) {
                         <span class="text-[10px] text-amber-400 font-bold">OPEN HUB <i class="fa-solid fa-chevron-right ml-1"></i></span>
                     </div>
                 </div>
-            `;
-        });
+            `).join(''));
     }
 
     if (topsideModules.length > 0) {
-        modulesHtml += `<h5 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-6 mb-2">Topside Modules</h5>`;
-        topsideModules.forEach(m => {
-            modulesHtml += `
+        htmlParts.push(`<h5 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-6 mb-2">Topside Modules</h5>`);
+        htmlParts.push(topsideModules.map(m => `
                 <div class="p-3 bg-white/5 rounded-lg border border-white/10 hover:border-brand-500/50 transition-colors cursor-pointer group mb-2" onclick="openModal('${m.title}')">
                     <div class="flex items-center justify-between mb-1">
                         <span class="text-sm font-bold text-white group-hover:text-brand-400">${m.title}</span>
@@ -433,9 +430,10 @@ function showSiteInfo(group) {
                     </div>
                     <span class="text-[10px] text-slate-500 line-clamp-1">${m.description}</span>
                 </div>
-            `;
-        });
+            `).join(''));
     }
+
+    const modulesHtml = htmlParts.join('');
 
     siteInfo.innerHTML = `
         <div class="animate-fade-in-up">
