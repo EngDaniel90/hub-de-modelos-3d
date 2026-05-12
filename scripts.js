@@ -1,4 +1,4 @@
-let allData = [];
+let allData = new Map();
 let map = null;
 let markers = [];
 
@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('links.json')
         .then(response => response.json())
         .then(data => {
-            allData = data;
+            data.forEach(item => allData.set(item.title, item));
             renderSection(data, 'TOPSIDE', 'topside-section');
             renderSection(data, 'HULL', 'hull-section');
         })
@@ -107,7 +107,7 @@ const modalContent = document.getElementById('modal-content');
 const modalFooter = document.getElementById('modal-footer');
 
 function openModal(title) {
-    const item = allData.find(d => d.title === title);
+    const item = allData.get(title);
     if (!item) return;
 
     modal.classList.remove('hidden');
