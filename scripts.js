@@ -190,13 +190,11 @@ function openModal(title) {
 
     let buttonsHtml = '';
     if (item.options && item.options.length > 0) {
-        item.options.forEach(opt => {
-            buttonsHtml += `
-                <a href="${opt.url}" target="_blank" class="inline-flex w-full justify-center rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand-600/20 hover:bg-brand-500 sm:ml-3 sm:w-auto transition-all active:scale-95 uppercase tracking-wide">
-                    ${opt.label === 'Fusion 360' ? '<i class="fa-solid fa-play mr-2 mt-0.5"></i> Play 3D' : opt.label}
-                </a>
-            `;
-        });
+        buttonsHtml = item.options.map(opt => `
+            <a href="${opt.url}" target="_blank" class="inline-flex w-full justify-center rounded-lg bg-brand-600 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-brand-600/20 hover:bg-brand-500 sm:ml-3 sm:w-auto transition-all active:scale-95 uppercase tracking-wide">
+                ${opt.label === 'Fusion 360' ? '<i class="fa-solid fa-play mr-2 mt-0.5"></i> Play 3D' : opt.label}
+            </a>
+        `).join('');
     }
     
     modalFooter.innerHTML = `
@@ -402,39 +400,35 @@ function showSiteInfo(group) {
     
     if (hullModules.length > 0) {
         modulesHtml += `<h5 class="text-[10px] font-bold text-amber-500 uppercase tracking-widest mt-4 mb-2">Hull Scope</h5>`;
-        hullModules.forEach(m => {
-            modulesHtml += `
-                <div class="p-4 bg-amber-500/10 rounded-lg border border-amber-500/30 hover:bg-amber-500/20 transition-all cursor-pointer group mb-3 shadow-lg shadow-amber-500/5" onclick="openModal('${m.title}')">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-base font-bold text-white group-hover:text-amber-400">${m.title}</span>
-                        <div class="flex gap-1">
-                             <span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">P84</span>
-                             <span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">P85</span>
-                        </div>
-                    </div>
-                    <p class="text-xs text-slate-300 mb-2 leading-relaxed">${m.description}</p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-[9px] uppercase tracking-tighter text-amber-500/70 font-mono font-bold">Large Module Access</span>
-                        <span class="text-[10px] text-amber-400 font-bold">OPEN HUB <i class="fa-solid fa-chevron-right ml-1"></i></span>
+        modulesHtml += hullModules.map(m => `
+            <div class="p-4 bg-amber-500/10 rounded-lg border border-amber-500/30 hover:bg-amber-500/20 transition-all cursor-pointer group mb-3 shadow-lg shadow-amber-500/5" onclick="openModal('${m.title}')">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-base font-bold text-white group-hover:text-amber-400">${m.title}</span>
+                    <div class="flex gap-1">
+                         <span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">P84</span>
+                         <span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">P85</span>
                     </div>
                 </div>
-            `;
-        });
+                <p class="text-xs text-slate-300 mb-2 leading-relaxed">${m.description}</p>
+                <div class="flex items-center justify-between">
+                    <span class="text-[9px] uppercase tracking-tighter text-amber-500/70 font-mono font-bold">Large Module Access</span>
+                    <span class="text-[10px] text-amber-400 font-bold">OPEN HUB <i class="fa-solid fa-chevron-right ml-1"></i></span>
+                </div>
+            </div>
+        `).join('');
     }
 
     if (topsideModules.length > 0) {
         modulesHtml += `<h5 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-6 mb-2">Topside Modules</h5>`;
-        topsideModules.forEach(m => {
-            modulesHtml += `
-                <div class="p-3 bg-white/5 rounded-lg border border-white/10 hover:border-brand-500/50 transition-colors cursor-pointer group mb-2" onclick="openModal('${m.title}')">
-                    <div class="flex items-center justify-between mb-1">
-                        <span class="text-sm font-bold text-white group-hover:text-brand-400">${m.title}</span>
-                        <span class="text-[9px] px-1.5 py-0.5 rounded ${m.project === 'P84' ? 'bg-brand-500/20 text-brand-400' : 'bg-indigo-500/20 text-indigo-400'} font-bold">${m.project}</span>
-                    </div>
-                    <span class="text-[10px] text-slate-500 line-clamp-1">${m.description}</span>
+        modulesHtml += topsideModules.map(m => `
+            <div class="p-3 bg-white/5 rounded-lg border border-white/10 hover:border-brand-500/50 transition-colors cursor-pointer group mb-2" onclick="openModal('${m.title}')">
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-sm font-bold text-white group-hover:text-brand-400">${m.title}</span>
+                    <span class="text-[9px] px-1.5 py-0.5 rounded ${m.project === 'P84' ? 'bg-brand-500/20 text-brand-400' : 'bg-indigo-500/20 text-indigo-400'} font-bold">${m.project}</span>
                 </div>
-            `;
-        });
+                <span class="text-[10px] text-slate-500 line-clamp-1">${m.description}</span>
+            </div>
+        `).join('');
     }
 
     siteInfo.innerHTML = `
