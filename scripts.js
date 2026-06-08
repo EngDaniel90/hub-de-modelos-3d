@@ -320,6 +320,8 @@ function renderMarkers() {
     markers = [];
 
     const cityGroups = {};
+    const seenItems = new Set();
+
     allData.forEach(item => {
         if (!item.projects) return;
         if (currentMapGroup !== 'ALL' && item.group !== currentMapGroup) return;
@@ -329,7 +331,10 @@ function renderMarkers() {
             const country = item.projects[projKey]?.country;
             if (city && CITY_COORDINATES[city]) {
                 if (!cityGroups[city]) cityGroups[city] = { name: city, country: country, modules: [] };
-                if (!cityGroups[city].modules.find(m => m.title === item.title && m.project === projKey)) {
+
+                const key = `${city}|${item.title}|${projKey}`;
+                if (!seenItems.has(key)) {
+                    seenItems.add(key);
                     cityGroups[city].modules.push({ ...item, project: projKey });
                 }
             }
