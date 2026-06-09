@@ -340,7 +340,10 @@ function renderMarkers() {
         const group = cityGroups[cityName];
         const coords = CITY_COORDINATES[cityName];
         
-        const isHullSite = group.modules.some(m => m.group === 'HULL');
+        group.topsideModules = group.modules.filter(m => m.group === 'TOPSIDE').sort((a,b) => a.title.localeCompare(b.title));
+        group.hullModules = group.modules.filter(m => m.group === 'HULL').sort((a,b) => a.title.localeCompare(b.title));
+
+        const isHullSite = group.hullModules.length > 0;
         
         // Custom Marker Style - Black and Larger
         const markerHtml = `
@@ -395,8 +398,8 @@ function showSiteInfo(group) {
     const siteInfo = document.getElementById('site-info');
     
     // Separate modules by group
-    const topsideModules = group.modules.filter(m => m.group === 'TOPSIDE').sort((a,b) => a.title.localeCompare(b.title));
-    const hullModules = group.modules.filter(m => m.group === 'HULL').sort((a,b) => a.title.localeCompare(b.title));
+    const topsideModules = group.topsideModules;
+    const hullModules = group.hullModules;
     
     let modulesHtml = '';
     
